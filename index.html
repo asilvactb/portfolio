@@ -224,7 +224,7 @@ $$('[data-fit]').forEach(el=>{el.innerHTML=[...el.childNodes].map(n=>n.nodeType=
  $$('.ch',el).forEach((c,i)=>c.style.transitionDelay=(i*.035)+'s')});
 function fit(){const groups={};$$('[data-fit]').forEach(el=>{el.style.fontSize='100px';const pad=parseFloat(getComputedStyle(el).paddingLeft)*2;const w=el.parentElement.clientWidth-pad;const f=100*w/(el.getBoundingClientRect().width-pad)*.99;const k=el.dataset.fit||Math.random();groups[k]=Math.min(groups[k]||1e9,f);el._k=k});$$('[data-fit]').forEach(el=>el.style.fontSize=groups[el._k]+'px')}
 fit();addEventListener('resize',fit);document.fonts&&document.fonts.ready.then(fit);
-requestAnimationFrame(()=>setTimeout(()=>document.body.classList.add('go'),120));
+requestAnimationFrame(()=>setTimeout(()=>document.body.classList.add('go'),120));setTimeout(()=>document.body.classList.add('go'),900);
 // clock
 function tick(){try{$('#clock').textContent='Braga, PT — '+new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Lisbon',hour:'2-digit',minute:'2-digit',second:'2-digit'}).format(new Date())}catch(e){}}tick();setInterval(tick,1000);
 // header

@@ -217,7 +217,7 @@ section{padding-bottom:clamp(140px,24vh,260px)}
 <script>
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-requestAnimationFrame(()=>setTimeout(()=>document.body.classList.add('go'),150));
+requestAnimationFrame(()=>setTimeout(()=>document.body.classList.add('go'),150));setTimeout(()=>document.body.classList.add('go'),900);
 function tick(){try{$('#clock').textContent='Braga, PT — '+new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Lisbon',hour:'2-digit',minute:'2-digit'}).format(new Date())}catch(e){}}tick();setInterval(tick,20000);
 
 /* hero: flowing line field */
