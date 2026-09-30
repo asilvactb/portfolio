@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Halden — Private Wealth (concept)</title>
+<meta name="description" content="Concept website for a fictional private wealth and family office firm.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0C0B;--ink:#ECE8DF;--dim:#8C897F;--line:rgba(236,232,223,.12);--acc:#C9D8B6;--serif:"Instrument Serif",Georgia,serif;--sans:"Inter",system-ui,sans-serif;--e:cubic-bezier(.16,1,.3,1);--p:clamp(20px,3.4vw,56px)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}::selection{background:var(--acc);color:#111}
+.sm{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:400}
+.d{color:var(--dim)}
+header{position:fixed;inset:0 0 auto 0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:24px var(--p);transition:background .5s,padding .5s}
+header.s{background:rgba(11,12,11,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:16px var(--p)}
+.logo{font-family:var(--serif);font-size:1.6rem;letter-spacing:.02em}
+nav{display:flex;gap:34px;align-items:center}
+.btn{border:1px solid var(--line);border-radius:100px;padding:11px 22px;transition:background .4s,color .4s,border-color .4s}
+.btn:hover{background:var(--ink);color:#111;border-color:var(--ink)}
+/* hero */
+.hero{height:100svh;min-height:640px;position:relative;overflow:hidden}
+#globe{position:absolute;right:-8vw;top:50%;transform:translateY(-50%);width:min(78vw,900px);height:min(78vw,900px)}
+.hero .txt{position:absolute;left:var(--p);bottom:12vh;max-width:760px}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.2rem,7.6vw,7.6rem);line-height:.95;letter-spacing:-.02em}
+h1 i{color:var(--acc)}
+h1 .l{display:block;overflow:hidden}h1 .l>span{display:block;transform:translateY(105%);transition:transform 1.6s var(--e)}
+h1 .l:nth-child(2)>span{transition-delay:.12s}.go h1 .l>span{transform:none}
+.hero p{max-width:40ch;color:var(--dim);margin-top:30px;opacity:0;transition:opacity 1.4s .6s}.go .hero p{opacity:1}
+.tick{position:absolute;left:0;right:0;bottom:0;border-top:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:14px 0}
+.tick div{display:inline-block;animation:mq 50s linear infinite}
+.tick span{margin:0 28px}.tick b{font-weight:400;color:var(--acc);margin-left:8px}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:clamp(120px,22vh,240px) var(--p)}
+.lead{font-family:var(--serif);font-size:clamp(2rem,4.2vw,4.2rem);line-height:1.12;max-width:24ch;letter-spacing:-.01em}
+.lead span{color:#3a3a36;transition:color .4s}.lead span.on{color:var(--ink)}.lead span.a.on{color:var(--acc);font-style:italic}
+/* pillars sticky stack */
+.pil{position:relative}
+.pc{position:sticky;top:12vh;min-height:66vh;border-top:1px solid var(--line);background:var(--bg);display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:4vw;padding:40px 0;align-items:start}
+.pc .n{font-family:var(--serif);font-size:clamp(5rem,12vw,11rem);line-height:.8;color:var(--acc)}
+.pc h3{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,4.6vw,4.6rem);line-height:1}
+.pc p{color:var(--dim);max-width:36ch;margin-top:18px}
+.pc ul{list-style:none;border-top:1px solid var(--line)}.pc li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+/* charts */
+.chart{display:grid;grid-template-columns:1fr 1.5fr;gap:5vw;align-items:center}
+.donut{position:relative;aspect-ratio:1;max-width:440px}
+.donut svg{width:100%;height:100%;transform:rotate(-90deg)}
+.donut circle{fill:none;stroke-width:14;transition:stroke-dashoffset 2s var(--e)}
+.donut .c{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.donut .c b{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,4vw,3.6rem);display:block;line-height:1}
+.leg{list-style:none;margin-top:30px}.leg li{display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.leg i{width:10px;height:10px;border-radius:50%}.leg span:last-child{margin-left:auto}
+.line svg{width:100%;height:auto;overflow:visible}
+.line path.p{fill:none;stroke:var(--acc);stroke-width:2;stroke-dasharray:2000;stroke-dashoffset:2000;transition:stroke-dashoffset 3s var(--e)}
+.line path.f{fill:url(#gf);opacity:0;transition:opacity 2s 1s}
+.in .line path.p{stroke-dashoffset:0}.in .line path.f{opacity:1}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:40px}
+.stats div{padding:24px 0}.stats b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,4vw,3.8rem);line-height:1}
+.disc{margin-top:20px;font-size:.78rem;color:var(--dim)}
+/* offices */
+.off{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.off div{background:var(--bg);padding:34px;min-height:260px;display:flex;flex-direction:column;justify-content:space-between;transition:background .5s}
+.off div:hover{background:#141613}
+.off h4{font-family:var(--serif);font-weight:400;font-size:2.6rem}
+.cta{text-align:center;padding-bottom:10vh}
+.cta h2{font-family:var(--serif);font-weight:400;font-size:clamp(3rem,9vw,9rem);line-height:.92;letter-spacing:-.02em}
+.cta h2 i{color:var(--acc)}
+.cta .btn{display:inline-block;margin-top:50px;background:var(--acc);color:#111;border-color:var(--acc);padding:16px 34px}
+footer{border-top:1px solid var(--line);padding:26px var(--p);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1.2s var(--e),transform 1.2s var(--e)}.rv.in{opacity:1;transform:none}
+.hd{display:flex;justify-content:space-between;align-items:end;margin-bottom:8vh;gap:30px}
+.hd h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,5.4vw,5.4rem);line-height:1}
+@media(max-width:900px){nav .sm{display:none}#globe{right:-40vw;top:34%;opacity:.7}.pc,.chart,.off,.stats{grid-template-columns:1fr}.pc{position:relative;top:0}.hd{flex-direction:column;align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.rv{opacity:1;transform:none}h1 .l>span{transform:none}}
+</style>
+</head>
+<body>
+<header id="hd"><a class="logo" href="#">Halden</a><nav><a class="sm" href="#approach">Approach</a><a class="sm" href="#performance">Performance</a><a class="sm" href="#offices">Offices</a><a class="btn sm" href="#contact">Private enquiry</a></nav></header>
+<section class="hero" style="padding:0">
+  <canvas id="globe" aria-hidden="true"></canvas>
+  <div class="txt"><div class="sm d" style="margin-bottom:26px">Private wealth · Family office · Est. 1998</div>
+  <h1><span class="l"><span>Wealth that outlives</span></span><span class="l"><span>the <i>moment.</i></span></span></h1>
+  <p>Independent stewardship for families and founders across three generations. Quiet, patient, and entirely aligned with you.</p></div>
+  <div class="tick sm d"><div id="tk"></div></div>
+</section>
+
+<section id="approach"><p class="sm d" style="margin-bottom:40px">Our approach</p><p class="lead" id="lead">We do not chase quarters. We build <em>structures</em> that protect what you have built, grow it with discipline, and hand it on with <em>clarity</em> to the people who come next.</p></section>
+
+<section class="pil" style="padding-top:0">
+  <div class="pc"><div class="n">i.</div><div><h3>Preserve</h3><p>Capital protection comes first. Diversified across asset classes, custodians and jurisdictions.</p></div><ul class="sm"><li>Multi-custodian<span class="d">Structure</span></li><li>Risk overlays<span class="d">Daily</span></li><li>Liquidity planning<span class="d">24 mo</span></li></ul></div>
+  <div class="pc"><div class="n">ii.</div><div><h3>Grow</h3><p>Long-horizon allocation to public markets, private equity and real assets, reviewed every quarter.</p></div><ul class="sm"><li>Private markets<span class="d">Access</span></li><li>Real assets<span class="d">Direct</span></li><li>Reviews<span class="d">Quarterly</span></li></ul></div>
+  <div class="pc"><div class="n">iii.</div><div><h3>Transfer</h3><p>Succession, governance and family education, so wealth arrives with purpose, not confusion.</p></div><ul class="sm"><li>Governance charter<span class="d">Family</span></li><li>Next-gen programme<span class="d">Annual</span></li><li>Estate structuring<span class="d">Legal</span></li></ul></div>
+</section>
+
+<section id="performance">
+  <div class="hd"><h2 class="rv">A model portfolio,<br><i style="color:var(--acc)">illustrated.</i></h2><p class="sm d rv" style="max-width:34ch">Illustrative allocation and returns for a balanced mandate. Fictional figures for a concept project.</p></div>
+  <div class="chart rv" id="chartBox">
+    <div><div class="donut"><svg viewBox="0 0 120 120" id="dn"></svg><div class="c"><div><b id="aum">0</b><span class="sm d">Assets, € m</span></div></div></div></div>
+    <div class="line"><svg viewBox="0 0 600 260" preserveAspectRatio="none"><defs><linearGradient id="gf" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#C9D8B6" stop-opacity=".25"/><stop offset="1" stop-color="#C9D8B6" stop-opacity="0"/></linearGradient></defs><path class="f" id="lf"/><path class="p" id="lp"/></svg>
+      <ul class="leg sm" id="leg"></ul></div>
+  </div>
+  <div class="stats rv"><div><span class="sm d">10-year annualised</span><b>6.8%</b></div><div><span class="sm d">Max drawdown</span><b>−11.2%</b></div><div><span class="sm d">Families served</span><b>140</b></div></div>
+  <p class="disc">All figures are fictional and shown for design purposes only. Past performance is not indicative of future results.</p>
+</section>
+
+<section id="offices" style="padding-top:0">
+  <div class="hd"><h2 class="rv">Three offices.<br>One standard.</h2></div>
+  <div class="off rv"><div><span class="sm d">01 · Headquarters</span><div><h4>Lisbon</h4><p class="d sm" id="t0"></p></div></div><div><span class="sm d">02</span><div><h4>Zürich</h4><p class="d sm" id="t1"></p></div></div><div><span class="sm d">03</span><div><h4>London</h4><p class="d sm" id="t2"></p></div></div></div>
+</section>
+
+<section class="cta" id="contact"><h2 class="rv">Begin a<br><i>conversation.</i></h2><a class="btn sm" href="#">Private enquiry</a></section>
+<footer class="sm d"><span>© 2026 Halden — fictional brand, concept project</span><span>Lisbon · Zürich · London</span></footer>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+setTimeout(()=>document.body.classList.add('go'),200);
+addEventListener('scroll',()=>$('#hd').classList.toggle('s',scrollY>40),{passive:true});
+// ticker
+const tk=[['Global equities','+0.42%'],['EUR/CHF','0.9412'],['Gold','+0.18%'],['Bund 10y','2.31%'],['Private credit','+0.06%'],['Real assets','+0.11%'],['S&P 500','+0.35%'],['Brent','−0.22%']];
+const one=tk.map(t=>`<span>${t[0]}<b>${t[1]}</b></span>`).join('·');$('#tk').innerHTML=one+'·'+one+'·';
+// globe
+(function(){const c=$('#globe'),x=c.getContext('2d');let W,d;function rs(){d=Math.min(2,devicePixelRatio||1);W=c.clientWidth;c.width=W*d;c.height=W*d;x.setTransform(d,0,0,d,0,0)}rs();addEventListener('resize',rs);
+ const P=[];const N=1400;for(let i=0;i<N;i++){const y=1-2*(i+.5)/N,r=Math.sqrt(1-y*y),t=i*2.399963;P.push([Math.cos(t)*r,y,Math.sin(t)*r])}
+ let a=0,tilt=.35,mx=0;addEventListener('mousemove',e=>mx=(e.clientX/innerWidth-.5));
+ const arcs=[[0.2,0.6],[1.1,-0.2],[2.4,0.3],[3.6,-0.5],[4.8,0.1]];
+ (function f(){x.clearRect(0,0,W,W);const R=W*.42,cx=W/2,cy=W/2;a+=.0016+mx*.004;const ca=Math.cos(a),sa=Math.sin(a),ct=Math.cos(tilt),st=Math.sin(tilt);
+  for(const p of P){let X=p[0]*ca-p[2]*sa,Z=p[0]*sa+p[2]*ca,Y=p[1]*ct-Z*st;Z=p[1]*st+Z*ct;const s=(Z+1.4)/2.4;x.fillStyle=`rgba(236,232,223,${.05+.55*Math.max(0,Z)})`;x.beginPath();x.arc(cx+X*R,cy+Y*R,.6+1.1*s,0,6.283);x.fill()}
+  for(const[l,t]of arcs){const L=l+a,px=Math.cos(t)*Math.cos(L),pz=Math.cos(t)*Math.sin(L),py=Math.sin(t);let Y=py*ct-pz*st,Z=py*st+pz*ct;if(Z>0){const X=px,g=x.createRadialGradient(cx+X*R,cy+Y*R,0,cx+X*R,cy+Y*R,14);g.addColorStop(0,'rgba(201,216,182,.9)');g.addColorStop(1,'rgba(201,216,182,0)');x.fillStyle=g;x.beginPath();x.arc(cx+X*R,cy+Y*R,14,0,6.283);x.fill()}}
+  if(scrollY<innerHeight*1.2)requestAnimationFrame(f);else setTimeout(()=>requestAnimationFrame(f),250)})()})();
+// lead words
+const ld=$('#lead');ld.innerHTML=ld.innerHTML.replace(/<em>(.*?)<\/em>/g,'§$1§').split(' ').map(w=>w.includes('§')?`<span class="a">${w.replace(/§/g,'')}</span>`:`<span>${w}</span>`).join(' ');
+const ws=$$('span',ld);addEventListener('scroll',()=>{const r=ld.getBoundingClientRect(),p=Math.min(1,Math.max(0,(innerHeight*.8-r.top)/(r.height+innerHeight*.3)));ws.forEach((w,i)=>w.classList.toggle('on',i<p*ws.length))},{passive:true});
+// donut + line
+const A=[['Public equities',38,'#C9D8B6'],['Fixed income',24,'#8FA58A'],['Private markets',18,'#ECE8DF'],['Real assets',12,'#5E6B5A'],['Cash & gold',8,'#34392F']];
+let off=0;const C=2*Math.PI*48;$('#dn').innerHTML=A.map(s=>{const len=C*s[1]/100,h=`<circle cx="60" cy="60" r="48" stroke="${s[2]}" stroke-dasharray="${len-1.5} ${C}" stroke-dashoffset="${C}" data-o="${-off}"/>`;off+=len;return h}).join('');
+$('#leg').innerHTML=A.map(s=>`<li><i style="background:${s[2]}"></i><span>${s[0]}</span><span class="d">${s[1]}%</span></li>`).join('');
+const pts=[];let v=100;for(let i=0;i<=40;i++){v*=1+(Math.sin(i*.9)*.012+.0055+(i%7==3?-.02:0));pts.push(v)}
+const mn=Math.min(...pts),mxv=Math.max(...pts),path=pts.map((p,i)=>`${i?'L':'M'}${i*15},${240-(p-mn)/(mxv-mn)*220}`).join('');
+$('#lp').setAttribute('d',path);$('#lf').setAttribute('d',path+'L600,260L0,260Z');
+function aum(){const el=$('#aum'),t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/1800);el.textContent=Math.round(2840*(1-Math.pow(1-p,3))).toLocaleString('en-GB');if(p<1)requestAnimationFrame(f)})(t0)}
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);if(e.target.id==='chartBox'){$$('#dn circle').forEach(c=>c.style.strokeDashoffset=c.dataset.o);aum()}}}),{threshold:.2});
+$$('.rv').forEach(e=>io.observe(e));
+// office clocks
+const tz=['Europe/Lisbon','Europe/Zurich','Europe/London'];function clk(){tz.forEach((z,i)=>{try{$('#t'+i).textContent=new Intl.DateTimeFormat('en-GB',{timeZone:z,hour:'2-digit',minute:'2-digit'}).format(new Date())+' local time'}catch(e){}})}clk();setInterval(clk,30000);
+</script>
+</body>
+</html>

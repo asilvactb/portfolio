@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nodal — AI agents for operations (concept)</title>
+<meta name="description" content="Concept website for a fictional AI software product.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07070B;--p1:#0E0E15;--ink:#EDEDF3;--dim:#8B8BA0;--line:rgba(237,237,243,.09);--v:#8B5CF6;--c:#22D3EE;--sans:"Space Grotesk",system-ui,sans-serif;--mono:"Geist Mono",ui-monospace,monospace;--e:cubic-bezier(.16,1,.3,1);--p:clamp(18px,3vw,44px)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}::selection{background:var(--v);color:#fff}
+.m{font-family:var(--mono);font-size:.74rem;letter-spacing:.02em}
+.d{color:var(--dim)}
+.grad{background:linear-gradient(90deg,var(--v),var(--c));-webkit-background-clip:text;background-clip:text;color:transparent}
+header{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:16px var(--p);border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
+header.s{background:rgba(7,7,11,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.lg{font-weight:600;font-size:1.15rem;display:flex;gap:10px;align-items:center}
+.lg i{width:18px;height:18px;border-radius:5px;background:linear-gradient(135deg,var(--v),var(--c));display:inline-block}
+nav{display:flex;gap:28px;align-items:center;font-size:.92rem;color:var(--dim)}nav a:hover{color:var(--ink)}
+.bt{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#07070B;border-radius:10px;padding:10px 16px;font-weight:500;font-size:.9rem;transition:transform .3s,box-shadow .3s}
+.bt:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(139,92,246,.7)}
+.bt.gh{background:transparent;color:var(--ink);border:1px solid var(--line)}
+/* hero */
+.hero{min-height:100svh;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px var(--p) 60px;overflow:hidden}
+#net{position:absolute;inset:0;width:100%;height:100%}
+.glow{position:absolute;width:70vw;height:50vw;left:15vw;top:-12vw;background:radial-gradient(closest-side,rgba(139,92,246,.35),transparent);filter:blur(20px);pointer-events:none}
+.badge{position:relative;border:1px solid var(--line);border-radius:100px;padding:6px 14px 6px 6px;display:inline-flex;gap:10px;align-items:center;background:rgba(14,14,21,.7);margin-bottom:28px}
+.badge b{background:linear-gradient(90deg,var(--v),var(--c));color:#07070B;border-radius:100px;padding:2px 10px;font-weight:600}
+h1{position:relative;font-weight:500;font-size:clamp(2.8rem,7.4vw,7rem);line-height:.98;letter-spacing:-.045em;max-width:14ch}
+.hero p{position:relative;color:var(--dim);font-size:clamp(1rem,1.4vw,1.2rem);max-width:46ch;margin:26px auto 34px}
+.hero .ctas{position:relative;display:flex;gap:10px;justify-content:center}
+/* terminal */
+.term{position:relative;margin:70px auto 0;width:min(820px,100%);background:var(--p1);border:1px solid var(--line);border-radius:16px;text-align:left;overflow:hidden;box-shadow:0 40px 100px -40px rgba(139,92,246,.5)}
+.term .tb{display:flex;gap:6px;padding:12px 14px;border-bottom:1px solid var(--line)}.term .tb i{width:10px;height:10px;border-radius:50%;background:#2a2a36}
+.term pre{font-family:var(--mono);font-size:.82rem;line-height:1.7;padding:18px 20px;min-height:230px;white-space:pre-wrap;color:#c8c8d6}
+.term .k{color:var(--c)}.term .g{color:#4ADE80}.term .v{color:#C4B5FD}
+.caret{display:inline-block;width:8px;height:15px;background:var(--c);vertical-align:-2px;animation:bl 1s steps(2) infinite}@keyframes bl{50%{opacity:0}}
+section{padding:clamp(100px,18vh,200px) var(--p)}
+.hd{text-align:center;max-width:760px;margin:0 auto 70px}
+.hd h2{font-weight:500;font-size:clamp(2.2rem,5vw,4.6rem);line-height:1;letter-spacing:-.04em}
+.hd p{color:var(--dim);margin-top:18px}
+/* bento with spotlight */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;max-width:1240px;margin:0 auto}
+.cell{position:relative;grid-column:span 2;min-height:280px;border-radius:18px;background:var(--p1);border:1px solid var(--line);padding:26px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.cell.w{grid-column:span 4}.cell.t{grid-column:span 3}.cell.f{grid-column:span 6;min-height:220px}
+.cell:before{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--x,50%) var(--y,50%),rgba(139,92,246,.18),transparent 45%);opacity:0;transition:opacity .4s}
+.bento:hover .cell:before{opacity:1}
+.cell h3{position:relative;font-weight:500;font-size:1.4rem;letter-spacing:-.02em;margin-bottom:6px}
+.cell p{position:relative;color:var(--dim);font-size:.95rem;max-width:40ch}
+.viz{position:absolute;left:26px;right:26px;top:26px;bottom:120px}
+.flow{display:flex;align-items:center;gap:10px;height:100%}
+.node{border:1px solid var(--line);background:#12121c;border-radius:10px;padding:10px 12px;font-family:var(--mono);font-size:.72rem;white-space:nowrap}
+.node.on{border-color:var(--v);box-shadow:0 0 20px -4px var(--v)}
+.wire{flex:1;height:1px;background:linear-gradient(90deg,var(--line),var(--v),var(--line));background-size:200% 100%;animation:wr 2s linear infinite}@keyframes wr{to{background-position:-200% 0}}
+.bars{display:flex;align-items:flex-end;gap:6px;height:100%}.bars i{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(var(--v),rgba(139,92,246,.1));height:10%;transition:height 1.4s var(--e)}
+.in .bars i{height:var(--h)}
+.ring{width:120px;height:120px;border-radius:50%;background:conic-gradient(var(--c) 0 var(--pc,0%),#1b1b27 0);display:grid;place-items:center;margin:0 auto;transition:--pc 2s}
+.ring span{width:96px;height:96px;border-radius:50%;background:var(--p1);display:grid;place-items:center;font-size:1.6rem;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-family:var(--mono);font-size:.72rem;color:var(--dim)}
+/* pricing */
+.tog{display:inline-flex;background:var(--p1);border:1px solid var(--line);border-radius:100px;padding:4px;margin-top:26px}
+.tog button{border:0;background:transparent;color:var(--dim);font:inherit;padding:8px 18px;border-radius:100px;cursor:pointer;transition:background .3s,color .3s}
+.tog button.on{background:var(--ink);color:#07070B}
+.pr{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1100px;margin:0 auto}
+.pc{border:1px solid var(--line);border-radius:18px;padding:30px;background:var(--p1);display:flex;flex-direction:column;gap:18px}
+.pc.hl{border-color:transparent;background:linear-gradient(var(--p1),var(--p1)) padding-box,linear-gradient(135deg,var(--v),var(--c)) border-box;border:1px solid transparent}
+.pc b.pp{font-size:3rem;font-weight:500;letter-spacing:-.04em;line-height:1}
+.pc ul{list-style:none;display:grid;gap:10px;color:var(--dim);font-size:.95rem}.pc li:before{content:"✓ ";color:var(--c)}
+.pc .bt{justify-content:center;margin-top:auto}
+.fin{text-align:center;position:relative;overflow:hidden}
+.fin h2{font-weight:500;font-size:clamp(3rem,9vw,9rem);letter-spacing:-.05em;line-height:.9}
+footer{border-top:1px solid var(--line);padding:24px var(--p);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.rv{opacity:0;transform:translateY(30px);filter:blur(6px);transition:opacity 1s var(--e),transform 1s var(--e),filter 1s var(--e)}.rv.in{opacity:1;transform:none;filter:none}
+@media(max-width:900px){nav a:not(.bt){display:none}.bento{grid-template-columns:1fr}.cell,.cell.w,.cell.t,.cell.f{grid-column:span 1}.pr{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.rv{opacity:1;transform:none;filter:none}}
+</style>
+</head>
+<body>
+<header id="hd"><a class="lg" href="#"><i></i>Nodal</a><nav><a href="#features">Product</a><a href="#pricing">Pricing</a><a href="#">Docs</a><a class="bt" href="#pricing">Start free</a></nav></header>
+
+<section class="hero">
+  <canvas id="net" aria-hidden="true"></canvas><div class="glow"></div>
+  <div class="badge m"><b>New</b>Agents now run on your own cloud →</div>
+  <h1 class="rv">AI agents that run your <span class="grad">operations.</span></h1>
+  <p class="rv">Nodal connects to your tools, reads the context and does the repetitive work: invoices, reports, triage. You approve what matters.</p>
+  <div class="ctas rv"><a class="bt" href="#pricing">Start free →</a><a class="bt gh" href="#features">See how it works</a></div>
+  <div class="term rv"><div class="tb"><i></i><i></i><i></i></div><pre id="tp"></pre></div>
+</section>
+
+<section id="features">
+  <div class="hd rv"><p class="m d" style="margin-bottom:14px">// Product</p><h2>Everything an operations team does twice, <span class="grad">done once.</span></h2></div>
+  <div class="bento" id="bento">
+    <div class="cell w rv"><div class="viz"><div class="flow"><div class="node" id="n0">Inbox</div><div class="wire"></div><div class="node" id="n1">Classify</div><div class="wire"></div><div class="node" id="n2">Draft reply</div><div class="wire"></div><div class="node" id="n3">You approve</div></div></div><h3>Visual workflows</h3><p>Chain agents like building blocks. Every step is logged and reversible.</p></div>
+    <div class="cell rv"><div class="viz" style="display:grid;place-items:center"><div class="ring" id="ring"><span id="rp">0%</span></div></div><h3>Accuracy you can see</h3><p>Confidence scores on every action.</p></div>
+    <div class="cell rv"><div class="viz"><div class="bars"></div></div><h3>Hours back</h3><p>Weekly time saved, per workflow.</p></div>
+    <div class="cell w rv"><div class="viz"><div class="chips"><span>Postgres</span><span>S3</span><span>REST</span><span>Webhooks</span><span>IMAP</span><span>CSV</span><span>SFTP</span><span>GraphQL</span></div></div><h3>Connects to anything</h3><p>Standard protocols out of the box, custom connectors in an afternoon.</p></div>
+    <div class="cell f rv"><div class="viz m d" style="line-height:1.9">SOC-style audit log<br>Role-based access<br>EU data residency<br>Your keys, your cloud</div><h3>Built for serious teams</h3><p>Security and control by default, not as an upsell.</p></div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="hd rv"><p class="m d" style="margin-bottom:14px">// Pricing</p><h2>Simple pricing. <span class="grad">No seat tax.</span></h2><div class="tog" id="tog"><button class="on" data-y="0">Monthly</button><button data-y="1">Yearly −20%</button></div></div>
+  <div class="pr">
+    <div class="pc rv"><span class="m d">Starter</span><b class="pp" data-m="0">€0</b><p class="d">For trying things out.</p><ul><li>3 workflows</li><li>1,000 runs / month</li><li>Community support</li></ul><a class="bt gh" href="#">Start free</a></div>
+    <div class="pc hl rv"><span class="m grad">Team — most popular</span><b class="pp" data-m="49">€49</b><p class="d">Per workspace, per month.</p><ul><li>Unlimited workflows</li><li>50,000 runs / month</li><li>Approvals &amp; audit log</li><li>Priority support</li></ul><a class="bt" href="#">Start 14-day trial</a></div>
+    <div class="pc rv"><span class="m d">Enterprise</span><b class="pp">Custom</b><p class="d">For regulated and large teams.</p><ul><li>Self-hosted option</li><li>SSO &amp; SCIM</li><li>Dedicated engineer</li></ul><a class="bt gh" href="#">Talk to us</a></div>
+  </div>
+</section>
+
+<section class="fin"><h2 class="rv">Let the agents<br><span class="grad">do the rest.</span></h2><div class="rv" style="margin-top:40px"><a class="bt" href="#pricing">Start free →</a></div></section>
+<footer class="m d"><span>© 2026 Nodal — fictional product, concept project</span><span>Made in Lisbon</span></footer>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+addEventListener('scroll',()=>$('#hd').classList.toggle('s',scrollY>30),{passive:true});
+// bars
+const H=[30,45,38,60,52,72,66,85,78,95];document.querySelector('.bars').innerHTML=H.map(h=>`<i style="--h:${h}%"></i>`).join('');
+// network canvas
+(function(){const c=$('#net'),x=c.getContext('2d');let W,Hh,d,mx=-999,my=-999;const N=[];
+ function rs(){d=Math.min(2,devicePixelRatio||1);W=c.clientWidth;Hh=c.clientHeight;c.width=W*d;c.height=Hh*d;x.setTransform(d,0,0,d,0,0)}rs();addEventListener('resize',rs);
+ const n=Math.min(90,Math.round(innerWidth/16));for(let i=0;i<n;i++)N.push({x:Math.random()*W,y:Math.random()*Hh,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3});
+ c.parentElement.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});
+ (function f(){x.clearRect(0,0,W,Hh);for(const p of N){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>Hh)p.vy*=-1}
+  for(let i=0;i<N.length;i++){const a=N[i];const dm=Math.hypot(a.x-mx,a.y-my);for(let j=i+1;j<N.length;j++){const b=N[j],dd=Math.hypot(a.x-b.x,a.y-b.y);if(dd<130){x.strokeStyle=`rgba(139,92,246,${(1-dd/130)*(dm<180?.6:.18)})`;x.lineWidth=1;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}
+   x.fillStyle=dm<180?'#22D3EE':'rgba(237,237,243,.35)';x.beginPath();x.arc(a.x,a.y,dm<180?2.2:1.4,0,6.283);x.fill()}
+  if(scrollY<innerHeight)requestAnimationFrame(f);else setTimeout(()=>requestAnimationFrame(f),300)})()})();
+// terminal typing
+const L=[['<span class="d">$</span> nodal run <span class="k">invoice-intake</span> --since today',''],['<span class="v">→</span> Connected: inbox, ledger, drive',''],['<span class="v">→</span> 14 new emails · 9 contain invoices',''],['<span class="v">→</span> Extracted supplier, amount, due date <span class="g">✓</span>',''],['<span class="v">→</span> Matched 8/9 to purchase orders <span class="g">✓</span>',''],['<span class="v">→</span> 1 needs review: <span class="k">"Atlas Supplies — €4,120"</span>',''],['<span class="g">✓ Done in 41s.</span> Awaiting your approval for 1 item.','']];
+(async function(){const el=$('#tp');let out='';const sleep=t=>new Promise(r=>setTimeout(r,t));await sleep(900);
+ for(const[l] of L){const plain=l;const tmp=document.createElement('div');tmp.innerHTML=plain;const txt=tmp.textContent;let i=0;
+  if(l.startsWith('<span class="d">$')){while(i<=txt.length){el.innerHTML=out+'<span class="d">$</span> '+txt.slice(2,i)+'<span class="caret"></span>';i++;await sleep(38)}}
+  out+=plain+'\n';el.innerHTML=out+'<span class="caret"></span>';await sleep(520)}})();
+// spotlight
+const bn=$('#bento');bn.addEventListener('mousemove',e=>$$('.cell',bn).forEach(c=>{const r=c.getBoundingClientRect();c.style.setProperty('--x',e.clientX-r.left+'px');c.style.setProperty('--y',e.clientY-r.top+'px')}));
+// workflow node animation
+let k=0;setInterval(()=>{$$('.node').forEach((n,i)=>n.classList.toggle('on',i===k));k=(k+1)%4},900);
+// ring
+function ring(){const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/1600),v=Math.round(97*(1-Math.pow(1-p,3)));$('#ring').style.background=`conic-gradient(var(--c) 0 ${v}%,#1b1b27 0)`;$('#rp').textContent=v+'%';if(p<1)requestAnimationFrame(f)})(t0)}
+// pricing toggle
+$$('#tog button').forEach(b=>b.addEventListener('click',()=>{$$('#tog button').forEach(q=>q.classList.remove('on'));b.classList.add('on');const y=+b.dataset.y;$$('[data-m]').forEach(p=>{const m=+p.dataset.m;p.textContent='€'+(y?Math.round(m*.8):m)})}));
+// reveals
+let rd=false;const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);if(!rd&&e.target.querySelector&&e.target.querySelector('#ring')){rd=true;ring()}}}),{threshold:.15});$$('.rv').forEach(e=>io.observe(e));
+</script>
+</body>
+</html>

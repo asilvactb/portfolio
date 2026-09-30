@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OSSA — Architecture, Porto (concept)</title>
+<meta name="description" content="Concept website for a fictional architecture studio in Porto.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#E9E7E2;--ink:#0E0E0E;--dim:#7d7a73;--line:#0E0E0E;--red:#FF3B1F;--sans:"Archivo","Helvetica Neue",Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;--e:cubic-bezier(.16,1,.3,1);--p:clamp(16px,2vw,28px)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.4;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}::selection{background:var(--red);color:#fff}
+.m{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.02em}
+.d{color:var(--dim)}
+.bar{position:fixed;top:0;left:0;right:0;z-index:30;display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line);background:var(--bg)}
+.bar>*{padding:12px var(--p);border-right:1px solid var(--line)}.bar>*:last-child{border-right:0;display:flex;gap:18px;justify-content:flex-end}
+.bar a:hover{background:var(--ink);color:var(--bg)}
+.bar .rd{display:inline-block;width:8px;height:8px;background:var(--red);margin-right:8px}
+/* hero */
+.hero{min-height:100svh;padding-top:42px;display:grid;grid-template-rows:1fr auto;border-bottom:1px solid var(--line)}
+.stage{position:relative;display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.stage .l{border-right:1px solid var(--line);padding:var(--p);display:flex;flex-direction:column;justify-content:space-between}
+.stage svg{width:100%;height:100%;display:block}
+.word{font-weight:900;font-stretch:125%;font-size:clamp(5rem,19vw,21rem);line-height:.78;letter-spacing:-.05em;padding:var(--p) var(--p) calc(var(--p)*.6);white-space:nowrap}
+.word span{display:inline-block;transform:translateY(100%);transition:transform 1.2s var(--e)}
+.go .word span{transform:none}
+.word .dot{color:var(--red)}
+.coords{position:absolute;right:var(--p);bottom:var(--p);text-align:right}
+/* sections */
+.sec{border-bottom:1px solid var(--line)}
+.sh{display:grid;grid-template-columns:1fr 3fr;border-bottom:1px solid var(--line)}
+.sh>*{padding:var(--p)}.sh>*:first-child{border-right:1px solid var(--line)}
+.sh h2{font-weight:800;font-stretch:112%;font-size:clamp(2.4rem,6vw,6rem);line-height:.9;letter-spacing:-.04em;text-transform:uppercase}
+/* projects */
+.pr{display:grid;grid-template-columns:repeat(3,1fr)}
+.pj{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:var(--p);display:flex;flex-direction:column;gap:14px;cursor:pointer;transition:background .35s}
+.pj:nth-child(3n){border-right:0}
+.pj:hover{background:#dedbd4}
+.pj svg{width:100%;aspect-ratio:4/3;display:block;background:#f2f0ec;border:1px solid var(--line)}
+.pj svg path,.pj svg line,.pj svg rect,.pj svg polyline{fill:none;stroke:var(--ink);stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 2.6s var(--e)}
+.pj.in svg *{stroke-dashoffset:0}
+.pj svg .red{stroke:var(--red)}
+.pj h3{font-weight:800;font-stretch:112%;font-size:clamp(1.4rem,2.2vw,2rem);text-transform:uppercase;letter-spacing:-.03em;line-height:1}
+.pj .row{display:flex;justify-content:space-between}
+/* horizontal manifesto */
+.hs{height:300vh;position:relative;border-bottom:1px solid var(--line)}
+.hs .st{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
+.hs .tr{display:flex;white-space:nowrap;will-change:transform;padding-left:var(--p)}
+.hs .tr span{font-weight:900;font-stretch:125%;font-size:clamp(5rem,16vw,17rem);letter-spacing:-.05em;line-height:.9;text-transform:uppercase;margin-right:.3em}
+.hs .tr span.o{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.hs .tr span.r{color:var(--red)}
+/* data table */
+.tb{display:grid;grid-template-columns:repeat(4,1fr)}
+.tb>div{border-right:1px solid var(--line);padding:var(--p);min-height:220px;display:flex;flex-direction:column;justify-content:space-between}
+.tb>div:last-child{border-right:0}
+.tb b{font-weight:800;font-stretch:125%;font-size:clamp(3rem,7vw,7rem);letter-spacing:-.05em;line-height:.85}
+/* studio */
+.stu{display:grid;grid-template-columns:1fr 3fr}
+.stu>*{padding:var(--p)}.stu>*:first-child{border-right:1px solid var(--line)}
+.stu p{font-size:clamp(1.3rem,2.4vw,2.2rem);line-height:1.15;letter-spacing:-.02em;max-width:30ch;font-weight:500}
+/* contact */
+.ct{display:grid;grid-template-columns:1fr 1fr}
+.ct>*{padding:var(--p)}.ct>*:first-child{border-right:1px solid var(--line)}
+.ct a.big{font-weight:900;font-stretch:125%;font-size:clamp(3rem,9vw,9rem);line-height:.85;letter-spacing:-.05em;text-transform:uppercase;display:block;transition:color .3s}
+.ct a.big:hover{color:var(--red)}
+form{display:grid;gap:0;border:1px solid var(--line)}
+input,textarea{font:inherit;font-family:var(--mono);font-size:.8rem;text-transform:uppercase;background:transparent;border:0;border-bottom:1px solid var(--line);padding:14px;color:var(--ink);resize:none}
+input:focus,textarea:focus{outline:none;background:#f2f0ec}
+button{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;background:var(--ink);color:var(--bg);border:0;padding:16px;cursor:pointer;text-align:left;transition:background .3s}
+button:hover{background:var(--red)}
+footer{display:flex;justify-content:space-between;padding:12px var(--p);flex-wrap:wrap;gap:8px}
+#cur{position:fixed;z-index:50;pointer-events:none;left:0;top:0;mix-blend-mode:difference;color:#fff;display:none;opacity:0;transition:opacity .3s}
+@media(hover:hover) and (min-width:900px){#cur{display:block}}
+#cur:before,#cur:after{content:"";position:absolute;background:#fff}#cur:before{width:24px;height:1px;left:-12px}#cur:after{width:1px;height:24px;top:-12px}
+#cur span{position:absolute;left:14px;top:8px;white-space:nowrap}
+@media(max-width:900px){.bar{grid-template-columns:1fr 1fr}.bar>*:nth-child(2),.bar>*:nth-child(3){display:none}.stage{grid-template-columns:1fr}.stage .l{border-right:0;border-bottom:1px solid var(--line)}.sh,.stu,.ct{grid-template-columns:1fr}.sh>*:first-child,.stu>*:first-child,.ct>*:first-child{border-right:0;border-bottom:1px solid var(--line)}.pr{grid-template-columns:1fr}.pj{border-right:0}.tb{grid-template-columns:1fr 1fr}.tb>div:nth-child(2){border-right:0}.hs{height:auto}.hs .st{position:relative;height:auto;padding:60px 0}.hs .tr{flex-wrap:wrap;white-space:normal}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.word span{transform:none}}
+</style>
+</head>
+<body>
+<div id="cur" class="m"><span id="cxy">0,0</span></div>
+<div class="bar m"><a href="#"><span class="rd"></span>OSSA Arquitetura</a><span class="d">Porto, PT — 41.15°N 8.61°W</span><span id="clk" class="d">—</span><span><a href="#work">Work</a><a href="#studio">Studio</a><a href="#contact">Contact</a></span></div>
+
+<section class="hero">
+  <div class="stage">
+    <div class="l"><div class="m">Index 00 — Studio for architecture &amp; urban design</div><p style="font-size:clamp(1.2rem,2vw,1.8rem);line-height:1.15;max-width:22ch;font-weight:500;letter-spacing:-.02em">We design buildings that do less, and mean more. Concrete, light and time.</p><div class="m d">Scroll ↓</div></div>
+    <div style="position:relative;min-height:46vh"><svg id="axo" viewBox="-300 -260 600 520"></svg><div class="coords m d" id="rot">Rotation 0°</div></div>
+  </div>
+  <div class="word" aria-label="OSSA"><span>O</span><span style="transition-delay:.05s">S</span><span style="transition-delay:.1s">S</span><span style="transition-delay:.15s">A</span><span class="dot" style="transition-delay:.2s">.</span></div>
+</section>
+
+<section class="sec" id="work">
+  <div class="sh"><div class="m">Index 01<br><span class="d">Selected work</span></div><h2>Built &amp; unbuilt</h2></div>
+  <div class="pr" id="pr"></div>
+</section>
+
+<div class="hs" id="hs"><div class="st"><div class="tr" id="tr"><span>Less</span><span class="o">noise.</span><span class="r">More</span><span>light.</span><span class="o">Less</span><span>walls.</span><span class="r">More</span><span class="o">life.</span></div></div></div>
+
+<section class="sec"><div class="tb"><div><span class="m d">Projects completed</span><b data-n="46">0</b></div><div><span class="m d">m² designed</span><b data-n="128" data-s="k">0</b></div><div><span class="m d">Years practising</span><b data-n="14">0</b></div><div><span class="m d">Architects</span><b data-n="9">0</b></div></div></section>
+
+<section class="sec" id="studio"><div class="stu"><div class="m">Index 02<br><span class="d">Studio</span></div><div><p>OSSA is a studio of nine architects in Porto. We work on houses, public buildings and quiet interventions in historic fabric, always starting from the site and never from a style.</p><p class="m d" style="margin-top:28px;font-size:.7rem;font-weight:400">Residential · Public · Heritage · Urban</p></div></div></section>
+
+<section class="sec" id="contact"><div class="ct"><div><span class="m d">Index 03 — Contact</span><a class="big" href="#">Start a<br>project→</a></div>
+<form onsubmit="event.preventDefault();this.querySelector('button').textContent='Received — we reply within 48h (demo)'"><input placeholder="Name" required><input placeholder="Email" type="email" required><input placeholder="Site location"><textarea rows="4" placeholder="Tell us about the project"></textarea><button>Send brief →</button></form></div></section>
+<footer class="m d"><span>© 2026 OSSA — fictional studio, concept project</span><span>Rua Exemplo 100, Porto</span></footer>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+setTimeout(()=>document.body.classList.add('go'),150);
+function tick(){try{$('#clk').textContent='Local '+new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Lisbon',hour:'2-digit',minute:'2-digit',second:'2-digit'}).format(new Date())}catch(e){}}tick();setInterval(tick,1000);
+// crosshair cursor with coordinates
+const cu=$('#cur');addEventListener('mousemove',e=>{cu.style.opacity=1;cu.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;$('#cxy').textContent=`X${String(e.clientX).padStart(4,'0')} Y${String(e.clientY).padStart(4,'0')}`});
+// axonometric building (rotates with mouse + time)
+const boxes=[[-120,-80,0,240,160,60],[-120,-80,60,140,160,70],[-40,-20,130,120,100,50],[60,-80,60,60,60,30],[-160,60,0,80,60,25]];
+let ang=.6,target=.6;addEventListener('mousemove',e=>target=.3+e.clientX/innerWidth*1.4);
+function proj(x,y,z){const c=Math.cos(ang),s=Math.sin(ang);const X=x*c-y*s,Y=x*s+y*c;return[X,Y*.5-z]}
+function draw(){ang+=(target-ang)*.05+.0006;let h='';
+ h+='<g stroke="#0E0E0E" fill="none" stroke-width="1" vector-effect="non-scaling-stroke">';
+ for(let i=-6;i<=6;i++){const a=proj(i*40,-240,0),b=proj(i*40,240,0),c=proj(-240,i*40,0),d=proj(240,i*40,0);h+=`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke-opacity=".12"/><line x1="${c[0]}" y1="${c[1]}" x2="${d[0]}" y2="${d[1]}" stroke-opacity=".12"/>`}
+ boxes.forEach(([x,y,z,w,d,hh],k)=>{const V=[[x,y,z],[x+w,y,z],[x+w,y+d,z],[x,y+d,z],[x,y,z+hh],[x+w,y,z+hh],[x+w,y+d,z+hh],[x,y+d,z+hh]].map(p=>proj(...p));
+  const E=[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+  const top=[4,5,6,7].map(i=>V[i].join(',')).join(' ');h+=`<polygon points="${top}" fill="${k==2?'#FF3B1F':'#E9E7E2'}" fill-opacity="${k==2?.9:.6}" stroke="none"/>`;
+  E.forEach(([a,b])=>h+=`<line x1="${V[a][0]}" y1="${V[a][1]}" x2="${V[b][0]}" y2="${V[b][1]}"/>`)});
+ h+='</g>';$('#axo').innerHTML=h;$('#rot').textContent='Rotation '+Math.round(ang*57.3%360)+'°';
+ if(scrollY<innerHeight*1.2)requestAnimationFrame(draw);else setTimeout(()=>requestAnimationFrame(draw),300)}
+draw();
+// projects with generated technical drawings
+const P=[['Casa do Muro','Gerês','Residential','2025'],['Biblioteca Norte','Matosinhos','Public','2024'],['Armazém 7','Porto','Heritage','2023'],['Pavilhão Rio','Gaia','Cultural','2023'],['Três Pátios','Braga','Residential','2022'],['Mercado Leve','Aveiro','Urban','2021']];
+function drawing(i){const r=n=>((Math.sin(i*97+n*13)+1)/2);let s='';const base=250,w=260+r(1)*60,h=80+r(2)*90,x0=(400-w)/2;
+ s+=`<line x1="20" y1="${base}" x2="380" y2="${base}"/>`;
+ if(i==3){s+=`<rect x="${x0}" y="${base-h}" width="${w*.6}" height="${h}"/><rect x="${x0+w*.6}" y="${base-h*.6}" width="${w*.4}" height="${h*.6}"/>`}else if(i==5){s+=`<rect x="${x0}" y="${base-h}" width="${w}" height="${h}"/><polyline points="${x0},${base-h} ${x0+w*.25},${base-h-40} ${x0+w*.5},${base-h} ${x0+w*.75},${base-h-40} ${x0+w},${base-h}"/>`}else if(i%3==0){s+=`<rect x="${x0}" y="${base-h}" width="${w}" height="${h}"/><polyline points="${x0-10},${base-h} 200,${base-h-60} ${x0+w+10},${base-h}"/>`}
+ else if(i%3==1){s+=`<rect x="${x0}" y="${base-h}" width="${w}" height="${h}"/><rect x="${x0+w*.55}" y="${base-h-50}" width="${w*.45}" height="50"/>`}
+ else{s+=`<path d="M${x0},${base} L${x0},${base-h} Q200,${base-h-90} ${x0+w},${base-h} L${x0+w},${base}"/>`}
+ const nw=3+(i*2)%4,wy=i>2?base-h*.55:base-h*.7,wh=i>2?h*.5:h*.4;for(let k=0;k<nw;k++){const wx=x0+20+k*(w-40)/nw;s+=`<rect x="${wx}" y="${wy}" width="${(w-40)/nw-12}" height="${wh}" ${k==(i%nw)?'class="red"':''}/>`}if(i>2){s+=`<line x1="${x0}" y1="${base-h*.62}" x2="${x0+w}" y2="${base-h*.62}"/>`}
+ s+=`<line x1="${x0}" y1="${base+18}" x2="${x0+w}" y2="${base+18}"/><line x1="${x0}" y1="${base+12}" x2="${x0}" y2="${base+24}"/><line x1="${x0+w}" y1="${base+12}" x2="${x0+w}" y2="${base+24}"/>`;
+ return `<svg viewBox="0 0 400 300">${s}<text x="200" y="${base+36}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#7d7a73">${(w/10).toFixed(1)} m</text></svg>`}
+$('#pr').innerHTML=P.map((p,i)=>`<div class="pj"><div class="row m"><span>${String(i+1).padStart(2,'0')}</span><span class="d">${p[3]}</span></div>${drawing(i)}<h3>${p[0]}</h3><div class="row m d"><span>${p[1]}</span><span>${p[2]}</span></div></div>`).join('');
+// reveals + counters
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);const b=e.target.querySelector?e.target.querySelector('[data-n]'):null}}),{threshold:.2});
+$$('.pj').forEach(p=>io.observe(p));
+const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){io2.unobserve(e.target);const b=e.target,to=+b.dataset.n,t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/1400);b.textContent=Math.round(to*(1-Math.pow(1-p,3)))+(b.dataset.s||'');if(p<1)requestAnimationFrame(f)})(t0)}}),{threshold:.5});
+$$('[data-n]').forEach(b=>io2.observe(b));
+// horizontal manifesto
+const hs=$('#hs'),tr=$('#tr');function hz(){if(innerWidth<=900){tr.style.transform='';return}const r=hs.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/(hs.offsetHeight-innerHeight)));tr.style.transform=`translateX(${-(tr.scrollWidth-innerWidth)*p}px)`}
+addEventListener('scroll',hz,{passive:true});hz();
+</script>
+</body>
+</html>

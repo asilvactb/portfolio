@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grão — Specialty Coffee Roasters (concept)</title>
+<meta name="description" content="Concept e-commerce website for a fictional specialty coffee roaster in Lisbon.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5ECDD;--esp:#2B1A12;--tom:#FF5B35;--sky:#A9D6FF;--mint:#B9E4C9;--sun:#FFD25A;--f:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--e:cubic-bezier(.34,1.56,.64,1);--e2:cubic-bezier(.16,1,.3,1);--p:clamp(18px,3vw,44px)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;overflow-x:hidden}
+body{overflow-x:clip;background:var(--cream);color:var(--esp);font-family:var(--f);line-height:1.4;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}::selection{background:var(--tom);color:#fff}
+header{position:fixed;top:14px;left:var(--p);right:var(--p);z-index:40;display:flex;justify-content:space-between;align-items:center;background:var(--esp);color:var(--cream);border-radius:100px;padding:10px 12px 10px 24px}
+.lg{font-weight:800;font-size:1.4rem;letter-spacing:-.03em}.lg b{color:var(--tom)}
+header nav{display:flex;gap:26px;font-weight:600;font-size:.95rem}
+.cart{background:var(--tom);color:#fff;border-radius:100px;padding:10px 18px;font-weight:600;display:flex;gap:8px;align-items:center;cursor:pointer;transition:transform .4s var(--e)}
+.cart i{font-style:normal;background:var(--cream);color:var(--esp);border-radius:100px;min-width:24px;height:24px;display:grid;place-items:center;font-size:.8rem}
+.cart.bump{transform:scale(1.15)}
+/* hero */
+.hero{min-height:100svh;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:0 var(--p) 6vh}
+#beans{position:absolute;inset:0;width:100%;height:100%}
+.hero h1{position:relative;font-weight:800;font-size:clamp(4rem,14vw,15rem);line-height:.82;letter-spacing:-.06em}
+.hero h1 span{display:inline-block;transform:translateY(120%) rotate(8deg);transition:transform 1s var(--e)}
+.go .hero h1 span{transform:none}
+.hero h1 .t{color:var(--tom)}
+.bag{position:absolute;right:8vw;top:16vh;width:clamp(200px,24vw,340px);aspect-ratio:3/4.2;transform:rotate(8deg);transition:transform .8s var(--e2)}
+.bagS{position:absolute;inset:0;border-radius:18px 18px 26px 26px;background:var(--c,var(--tom));box-shadow:inset -18px 0 30px rgba(0,0,0,.12),0 40px 60px -30px rgba(43,26,18,.5);overflow:hidden}
+.bagS:before{content:"";position:absolute;left:0;right:0;top:0;height:14%;background:rgba(0,0,0,.12);border-bottom:3px dashed rgba(255,255,255,.35)}
+.lab{position:absolute;left:10%;right:10%;top:26%;bottom:12%;background:var(--cream);border-radius:12px;padding:10% 8%;display:flex;flex-direction:column;justify-content:space-between}
+.lab b{font-weight:800;font-size:clamp(1.3rem,2.4vw,2.2rem);letter-spacing:-.04em;line-height:.9}
+.lab small{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.hero .sub{position:absolute;right:var(--p);bottom:6vh;max-width:30ch;text-align:right;font-weight:600;font-size:1.05rem}
+.pill{display:inline-block;background:var(--esp);color:var(--cream);border-radius:100px;padding:14px 24px;font-weight:600;margin-top:14px;transition:background .3s,transform .4s var(--e)}
+.pill:hover{background:var(--tom);transform:rotate(-3deg) scale(1.05)}
+/* marquee */
+.mq{background:var(--tom);color:var(--cream);overflow:hidden;white-space:nowrap;padding:18px 0;transform:rotate(-2deg);margin:4vh -2vw 0;font-weight:800;font-size:clamp(1.6rem,3.4vw,3rem);letter-spacing:-.03em}
+.mq div{display:inline-block;animation:m 22s linear infinite}@keyframes m{to{transform:translateX(-50%)}}
+.mq span{margin:0 .6em}
+section{padding:clamp(100px,18vh,200px) var(--p)}
+h2{font-weight:800;font-size:clamp(3rem,8vw,8rem);line-height:.86;letter-spacing:-.055em}
+h2 em{font-style:normal;color:var(--tom)}
+/* shop */
+.shop{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px);margin-top:8vh}
+.pd{border-radius:28px;padding:26px;background:var(--bgc);display:flex;flex-direction:column;gap:18px;transition:transform .6s var(--e)}
+.pd:hover{transform:translateY(-10px) rotate(-1deg)}
+.pd .bag{position:relative;right:auto;top:auto;width:62%;margin:10px auto 0;transform:rotate(-4deg)}
+.pd:hover .bag{transform:rotate(4deg) scale(1.05)}
+.pd h3{font-weight:800;font-size:1.9rem;letter-spacing:-.04em;line-height:1}
+.notes{display:flex;flex-wrap:wrap;gap:6px}.notes span{border:1.5px solid var(--esp);border-radius:100px;padding:4px 12px;font-size:.8rem;font-weight:600}
+.buy{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
+.buy b{font-size:1.6rem;font-weight:800}
+.add{border:0;background:var(--esp);color:var(--cream);font:inherit;font-weight:600;border-radius:100px;padding:12px 20px;cursor:pointer;transition:transform .4s var(--e),background .3s}
+.add:hover{transform:scale(1.08)}.add.ok{background:#1f7a4d}
+/* flavour wheel */
+.fw{display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center}
+.wheel{position:relative;aspect-ratio:1;max-width:520px;width:100%;justify-self:center}
+.wheel svg{width:100%;height:100%;transition:transform 1s var(--e)}
+.wheel path{cursor:pointer;transition:opacity .3s}
+.wheel .c{position:absolute;inset:34%;border-radius:50%;background:var(--cream);display:grid;place-items:center;text-align:center;font-weight:800;font-size:clamp(1.1rem,2vw,1.6rem);letter-spacing:-.03em;padding:10px;pointer-events:none}
+.fw .info h3{font-size:clamp(2rem,4vw,3.6rem);font-weight:800;letter-spacing:-.05em;line-height:.95;margin-bottom:14px}
+.fw .info p{font-size:1.15rem;max-width:34ch}
+/* subscription */
+.sub2{background:var(--esp);color:var(--cream);border-radius:40px;margin:0 var(--p);padding:clamp(40px,8vh,90px) clamp(24px,5vw,70px);display:grid;grid-template-columns:1.2fr 1fr;gap:5vw;align-items:center}
+.sub2 h2 em{color:var(--sun)}
+.opts{display:grid;gap:12px}
+.opt{border:2px solid rgba(245,236,221,.25);border-radius:20px;padding:20px 22px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:border-color .3s,background .3s}
+.opt.on{border-color:var(--sun);background:rgba(255,210,90,.08)}
+.opt b{font-size:1.4rem}
+.freq{display:flex;background:rgba(245,236,221,.1);border-radius:100px;padding:4px;margin-bottom:6px}
+.freq button{flex:1;border:0;background:transparent;color:var(--cream);font:inherit;font-weight:600;padding:10px;border-radius:100px;cursor:pointer;transition:background .3s,color .3s}
+.freq button.on{background:var(--sun);color:var(--esp)}
+footer{padding:60px var(--p) 30px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-weight:600}
+footer .big{width:100%;margin-bottom:24px;font-weight:800;font-size:clamp(4rem,20vw,22rem);letter-spacing:-.07em;line-height:.8;color:var(--tom)}
+.rv{opacity:0;transform:translateY(50px);transition:opacity .9s var(--e2),transform 1.1s var(--e)}.rv.in{opacity:1;transform:none}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,250%);visibility:hidden;background:var(--esp);color:var(--cream);padding:14px 22px;border-radius:100px;font-weight:600;z-index:50;transition:transform .5s var(--e)}
+.toast.on{transform:translate(-50%,0);visibility:visible}
+@media(max-width:900px){header nav{display:none}.bag{right:-6vw;top:14vh;width:48vw}.hero .sub{display:none}.shop,.fw,.sub2{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.rv{opacity:1;transform:none}.hero h1 span{transform:none}}
+</style>
+</head>
+<body>
+<header><a class="lg" href="#">grão<b>.</b></a><nav><a href="#shop">Shop</a><a href="#flavour">Flavour</a><a href="#sub">Subscribe</a></nav><div class="cart" id="cart">Bag <i id="cn">0</i></div></header>
+
+<section class="hero" style="padding-top:0">
+  <canvas id="beans" aria-hidden="true"></canvas>
+  <div class="bag" id="hbag" style="--c:var(--tom)"><div class="bagS"><div class="lab"><small>Grão · Lisboa</small><b>Etiópia<br>Guji</b><small>Floral · Peach · 250g</small></div></div></div>
+  <h1><span>Good</span> <span style="transition-delay:.08s">coffee,</span><br><span class="t" style="transition-delay:.16s">no</span> <span class="t" style="transition-delay:.24s">fuss.</span></h1>
+  <div class="sub">Small-batch roasted in Lisbon every Tuesday. At your door by Friday.<br><a class="pill" href="#shop">Shop the beans →</a></div>
+</section>
+<div class="mq"><div id="mq"></div></div>
+
+<section id="shop">
+  <h2 class="rv">This week's<br><em>roasts.</em></h2>
+  <div class="shop" id="shopG"></div>
+</section>
+
+<section id="flavour" style="padding-top:0">
+  <div class="fw">
+    <div class="wheel rv"><svg viewBox="-110 -110 220 220" id="wh"></svg><div class="c" id="wc">Tap a flavour</div></div>
+    <div class="info rv"><p style="font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem;margin-bottom:18px">Flavour finder</p><h3 id="fh">What do you like in a cup?</h3><p id="fp">Spin the wheel and we'll point you to the roast that tastes like it.</p><a class="pill" href="#shop" id="fl">See all roasts →</a></div>
+  </div>
+</section>
+
+<div class="sub2 rv" id="sub">
+  <div><p style="font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem;margin-bottom:18px;color:var(--sun)">Subscription</p><h2>Never run<br><em>out again.</em></h2><p style="margin-top:20px;max-width:34ch;font-size:1.1rem;opacity:.8">Pause, skip or cancel any time. Free delivery in Portugal.</p></div>
+  <div><div class="freq" id="freq"><button class="on" data-f="1">Weekly</button><button data-f=".9">Every 2 weeks</button><button data-f=".8">Monthly</button></div>
+  <div class="opts" id="opts"><div class="opt on" data-p="11"><span>1 bag · 250g</span><b>€11</b></div><div class="opt" data-p="20"><span>2 bags · 500g</span><b>€20</b></div><div class="opt" data-p="36"><span>4 bags · 1kg</span><b>€36</b></div></div>
+  <a class="pill" style="background:var(--sun);color:var(--esp);margin-top:20px" href="#" id="subBtn">Start subscription</a></div>
+</div>
+
+<footer><div class="big">grão.</div><span>© 2026 Grão — fictional brand, concept project</span><span>Roasted in Lisbon</span></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+setTimeout(()=>document.body.classList.add('go'),150);
+// beans canvas: physics-ish floating beans repelled by cursor
+(function(){const c=$('#beans'),x=c.getContext('2d');let W,H,d,mx=-999,my=-999;const B=[];
+ function rs(){d=Math.min(2,devicePixelRatio||1);W=c.clientWidth;H=c.clientHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0)}rs();addEventListener('resize',rs);
+ for(let i=0;i<26;i++)B.push({x:Math.random()*W,y:Math.random()*H*.7,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:10+Math.random()*14,a:Math.random()*6,va:(Math.random()-.5)*.01});
+ c.parentElement.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});
+ function bean(b){x.save();x.translate(b.x,b.y);x.rotate(b.a);x.fillStyle='#5a3620';x.beginPath();x.ellipse(0,0,b.r,b.r*.68,0,0,6.283);x.fill();x.strokeStyle='#2B1A12';x.lineWidth=2;x.beginPath();x.moveTo(-b.r*.8,0);x.bezierCurveTo(-b.r*.3,-b.r*.25,b.r*.3,b.r*.25,b.r*.8,0);x.stroke();x.restore()}
+ (function f(){x.clearRect(0,0,W,H);for(const b of B){const dx=b.x-mx,dy=b.y-my,dd=Math.hypot(dx,dy);if(dd<140){b.vx+=dx/dd*.4;b.vy+=dy/dd*.4}b.vx*=.97;b.vy*=.97;b.vx+=(Math.random()-.5)*.02;b.vy+=(Math.random()-.5)*.02;b.x+=b.vx;b.y+=b.vy;b.a+=b.va+b.vx*.01;if(b.x<-30)b.x=W+30;if(b.x>W+30)b.x=-30;if(b.y<-30)b.y=H+30;if(b.y>H+30)b.y=-30;bean(b)}
+  if(scrollY<innerHeight)requestAnimationFrame(f);else setTimeout(()=>requestAnimationFrame(f),300)})()})();
+// hero bag tilt
+addEventListener('mousemove',e=>{if(scrollY>innerHeight)return;const r=(e.clientX/innerWidth-.5)*16,t=(e.clientY/innerHeight-.5)*-10;$('#hbag').style.transform=`rotate(${8+r*.5}deg) translate(${r*2}px,${t*2}px)`});
+// marquee
+const w=['Fresh every Tuesday','✺','Direct trade','✺','Free delivery in Portugal','✺','Roasted in Lisbon','✺'];$('#mq').innerHTML=(w.map(s=>`<span>${s}</span>`).join('')).repeat(2);
+// products
+const P=[['Etiópia Guji','Floral, peach, black tea','var(--tom)','var(--sky)',14,['Floral','Peach','Tea']],['Colômbia Huila','Caramel, red apple, cocoa','var(--sun)','var(--mint)',12,['Caramel','Apple','Cocoa']],['Brasil Cerrado','Chocolate, hazelnut, smooth','#6FB7FF','var(--sun)',11,['Chocolate','Nutty','Smooth']]];
+$('#shopG').innerHTML=P.map((p,i)=>`<div class="pd rv" style="--bgc:${p[3]};transition-delay:${i*.08}s"><div class="bag" style="--c:${p[2]}"><div class="bagS"><div class="lab"><small>Grão · Lisboa</small><b>${p[0].split(' ').join('<br>')}</b><small>250g</small></div></div></div><h3>${p[0]}</h3><p>${p[1]}</p><div class="notes">${p[5].map(n=>`<span>${n}</span>`).join('')}</div><div class="buy"><b>€${p[4]}</b><button class="add" data-n="${p[0]}">Add to bag</button></div></div>`).join('');
+let cnt=0;$$('.add').forEach(b=>b.addEventListener('click',()=>{cnt++;$('#cn').textContent=cnt;const c=$('#cart');c.classList.add('bump');setTimeout(()=>c.classList.remove('bump'),300);b.textContent='Added ✓';b.classList.add('ok');setTimeout(()=>{b.textContent='Add to bag';b.classList.remove('ok')},1400);toast(b.dataset.n+' added to your bag')}));
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),2000)}
+// flavour wheel
+const F=[['Floral','#FFB3C7',0],['Fruity','#FF5B35',0],['Citrus','#FFD25A',0],['Sweet','#E8A15B',1],['Chocolate','#6B3F26',2],['Nutty','#B98457',2],['Spicy','#C9452E',1],['Tea-like','#B9E4C9',0]];
+const n=F.length;let h='';F.forEach((f,i)=>{const a0=i/n*6.283-1.5708,a1=(i+1)/n*6.283-1.5708,R=100,r=38,p=(a,rr)=>[Math.cos(a)*rr,Math.sin(a)*rr];const[A,Bp,C,D]=[p(a0,R),p(a1,R),p(a1,r),p(a0,r)];
+ const m=(a0+a1)/2,t=p(m,70);h+=`<path d="M${A}A${R},${R} 0 0 1 ${Bp}L${C}A${r},${r} 0 0 0 ${D}Z" fill="${f[1]}" stroke="#F5ECDD" stroke-width="1.5" data-i="${i}"/><text x="${t[0]}" y="${t[1]}" text-anchor="middle" dominant-baseline="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="8" fill="${i==4?'#F5ECDD':'#2B1A12'}" transform="rotate(${m*57.3+90} ${t[0]} ${t[1]})" pointer-events="none">${f[0]}</text>`});
+$('#wh').innerHTML=h;let rot=0;
+$$('#wh path').forEach(pth=>pth.addEventListener('click',()=>{const i=+pth.dataset.i,f=F[i],prod=P[f[2]];rot=-(i+.5)/n*360;$('#wh').style.transform=`rotate(${rot}deg)`;$$('#wh path').forEach(q=>q.style.opacity=q===pth?1:.45);$('#wc').textContent=f[0];$('#fh').innerHTML=`You'll love<br>${prod[0]}.`;$('#fp').textContent=prod[1]+'. Roasted this week, €'+prod[4]+' a bag.'}));
+// subscription
+let base=11,fq=1;function upd(){$('#subBtn').textContent=`Start subscription · €${(base*fq).toFixed(2).replace('.00','')} per delivery`}
+$$('.opt').forEach(o=>o.addEventListener('click',()=>{$$('.opt').forEach(q=>q.classList.remove('on'));o.classList.add('on');base=+o.dataset.p;upd()}));
+$$('#freq button').forEach(b=>b.addEventListener('click',()=>{$$('#freq button').forEach(q=>q.classList.remove('on'));b.classList.add('on');fq=+b.dataset.f;upd()}));upd();
+$('#subBtn').addEventListener('click',e=>{e.preventDefault();toast('Subscription started (demo)')});
+$('#cart').addEventListener('click',()=>toast(cnt?`${cnt} item${cnt>1?'s':''} in your bag (demo)`:'Your bag is empty'));
+// reveals
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});$$('.rv').forEach(e=>io.observe(e));
+</script>
+</body>
+</html>
