@@ -1,30 +1,283 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Portfolio — Premium Websites &amp; Financial Reporting</title>
-<meta name="description" content="Concept projects: premium websites and financial reporting.">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alexandre — Premium Websites &amp; Financial Reporting</title>
+<meta name="description" content="Independent designer and analyst. Premium websites and clear financial reporting for brands, SMEs and independent professionals. English and Portuguese.">
+<meta property="og:title" content="Alexandre — Premium Websites & Financial Reporting">
+<meta property="og:description" content="Websites that look expensive. Numbers that make sense.">
 <style>
-:root{--bg:#f6f5f2;--ink:#0f1724;--dim:#67707e;--line:rgba(15,23,36,.12);--acc:#b39158;--serif:ui-serif,"Iowan Old Style","Palatino Linotype",Georgia,serif}
-*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--ink);font-family:"Helvetica Neue",Inter,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-.w{max-width:1100px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
-header{padding:12vh 0 7vh}.e{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,6.4vw,5.4rem);line-height:1.03;letter-spacing:-.025em;margin-top:22px;max-width:15ch}h1 em{font-style:italic;color:var(--acc)}
-header p{color:var(--dim);max-width:50ch;margin-top:22px}
-.list{border-top:1px solid var(--ink)}
-.list a{display:grid;grid-template-columns:70px 1fr auto;gap:10px;align-items:baseline;padding:34px 0;border-bottom:1px solid var(--line);transition:padding .5s cubic-bezier(.22,.8,.24,1)}
-.list a:hover{padding-left:14px}.list small{color:var(--dim);font-size:.78rem;letter-spacing:.14em}
-.list h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,3.4vw,2.6rem);letter-spacing:-.015em;line-height:1.1}
-.list p{color:var(--dim);font-size:.95rem;margin-top:6px}.list span{color:var(--acc);font-size:.85rem}
-footer{padding:8vh 0;font-size:.8rem;color:var(--dim)}
-@media(max-width:700px){.list a{grid-template-columns:44px 1fr}.list span{display:none}}
-</style></head><body>
-<div class="w"><header><div class="e">Portfolio · Concept projects</div>
-<h1>Premium websites &amp; <em>financial reporting.</em></h1>
-<p>Selected concept work for fictional brands: clean design, clear numbers. Available for projects in English and Portuguese.</p></header>
-<div class="list">
-<a href="casa-alvarenga.html"><small>01</small><div><h2>Casa Alvarenga</h2><p>Boutique hotel website · Hospitality</p></div><span>View →</span></a>
-<a href="reis-associates.html"><small>02</small><div><h2>Reis &amp; Associates</h2><p>Law firm website · Professional services</p></div><span>View →</span></a>
-<a href="financial-report.html"><small>03</small><div><h2>Northbridge Components</h2><p>Monthly management report · Financial reporting</p></div><span>View →</span></a>
-<a href="financial-report-northbridge.xlsx"><small>04</small><div><h2>Northbridge — Excel model</h2><p>The same report as a live spreadsheet with formulas</p></div><span>Download →</span></a>
-</div>
-<footer>All brands and figures are fictional and shown as concept work.</footer></div>
-</body></html>
+:root{--bg:#f6f5f2;--ink:#0f1724;--dim:#67707e;--line:rgba(15,23,36,.12);--navy:#0f1a2b;--acc:#b39158;--acc2:#d1b27a;
+--sans:"Helvetica Neue",Inter,system-ui,-apple-system,"Segoe UI",sans-serif;--serif:ui-serif,"Iowan Old Style","Palatino Linotype",Georgia,serif;--ease:cubic-bezier(.22,.8,.24,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+body.lock{overflow:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+.eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+/* loader */
+#loader{position:fixed;inset:0;z-index:100;background:var(--navy);color:#f6f5f2;display:grid;place-items:center;transition:transform 1.1s var(--ease)}
+#loader.done{transform:translateY(-100%)}
+#loader div{font-family:var(--serif);font-size:clamp(2rem,5vw,3.6rem);letter-spacing:-.02em;opacity:0;animation:ld 1.6s var(--ease) forwards}
+#loader span{color:var(--acc2)}
+@keyframes ld{0%{opacity:0;transform:translateY(16px)}40%{opacity:1;transform:none}85%{opacity:1}100%{opacity:1}}
+/* progress + nav */
+#prog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--acc);z-index:60}
+header.nav{position:fixed;inset:0 0 auto 0;z-index:50;padding:24px 0;transition:.5s;border-bottom:1px solid transparent}
+header.nav.solid{background:rgba(246,245,242,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:15px 0;border-color:var(--line)}
+.nav .in{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:var(--serif);font-size:1.3rem}.logo span{color:var(--acc)}
+.nav ul{display:flex;gap:34px;list-style:none;align-items:center}
+.nav ul a{font-size:.82rem;position:relative;padding:4px 0;color:var(--dim);transition:color .3s}
+.nav ul a.on,.nav ul a:hover{color:var(--ink)}
+.nav ul a:not(.pill)::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.nav ul a.on::after,.nav ul a:not(.pill):hover::after{transform:scaleX(1)}
+.pill{background:var(--navy);color:#fff!important;padding:11px 22px!important;border-radius:100px;transition:background .4s,transform .3s}
+.pill:hover{background:var(--acc)}
+.btn{display:inline-flex;align-items:center;gap:14px;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;padding:17px 32px;background:var(--navy);color:#fff;border-radius:100px;transition:gap .4s var(--ease),background .4s,transform .3s;border:0;cursor:pointer;font-family:inherit}
+.btn:hover{gap:22px;background:var(--acc)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:14vh 0 9vh;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(520px circle at var(--mx,70%) var(--my,30%),rgba(179,145,88,.22),transparent 70%);pointer-events:none;transition:background .1s}
+.hero .g{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:4vw;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:100px;padding:8px 16px;font-size:.78rem;color:var(--dim);background:rgba(255,255,255,.55);margin-bottom:34px}
+.chip i{width:7px;height:7px;border-radius:50%;background:#2f7d5b;box-shadow:0 0 0 0 rgba(47,125,91,.5);animation:pulse 2.2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(47,125,91,0)}100%{box-shadow:0 0 0 0 rgba(47,125,91,0)}}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.9rem,6.2vw,6.2rem);line-height:1.01;letter-spacing:-.03em}
+h1 em{font-style:italic;color:var(--acc)}
+h1 .ln{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.08em}
+h1 .ln>span{display:block;transform:translateY(110%)}
+body.go h1 .ln>span{animation:up 1.2s var(--ease) forwards}
+body.go h1 .ln:nth-child(2)>span{animation-delay:.1s}body.go h1 .ln:nth-child(3)>span{animation-delay:.2s}
+@keyframes up{to{transform:none}}
+.rot{display:inline-block;position:relative;font-style:italic;color:var(--acc)}
+.hero p.lede{color:var(--dim);font-size:1.1rem;max-width:44ch;margin:34px 0 36px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.ticks{display:flex;gap:28px;margin-top:44px;flex-wrap:wrap;font-size:.8rem;color:var(--dim)}
+.ticks span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--acc);margin-right:10px;vertical-align:middle}
+.fade{opacity:0;transform:translateY(22px)}
+body.go .fade{animation:fu 1.2s var(--ease) forwards;animation-delay:var(--d,.4s)}
+@keyframes fu{to{opacity:1;transform:none}}
+/* hero 3D stack */
+.stack{position:relative;height:clamp(320px,36vw,540px);perspective:1500px}
+.plane{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(8deg) rotateY(-14deg);transition:transform .25s ease-out}
+.card3{position:absolute;width:76%;aspect-ratio:16/10;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 40px 70px -28px rgba(15,23,36,.45)}
+.card3 iframe,.shot iframe{position:absolute;left:0;top:0;width:1440px;height:900px;border:0;transform-origin:0 0;pointer-events:none}
+.k1{left:0;top:0;transform:translateZ(0)}.k2{left:12%;top:20%;transform:translateZ(70px)}.k3{left:24%;top:40%;transform:translateZ(140px)}
+.card3 b{position:absolute;left:12px;bottom:10px;z-index:3;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:rgba(15,26,43,.82);padding:5px 12px;border-radius:100px;font-weight:500}
+/* sections */
+section{padding:13vh 0}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:8vh;flex-wrap:wrap}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4.6vw,4rem);line-height:1.05;letter-spacing:-.022em;max-width:15ch;margin-top:16px}
+h2 em{font-style:italic;color:var(--acc)}
+.head p{color:var(--dim);max-width:40ch}
+/* work: sticky stacking cards */
+.work{position:relative}
+.proj{position:sticky;top:calc(11vh + var(--i)*26px);margin-bottom:9vh;background:#fff;border:1px solid var(--line);border-radius:20px;padding:clamp(20px,3vw,44px);display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(24px,4vw,60px);align-items:center;box-shadow:0 30px 60px -40px rgba(15,23,36,.35)}
+.proj:nth-child(even) .shot{order:2}
+.proj:nth-child(even){grid-template-columns:1fr 1.5fr}
+.shot{display:flex;flex-direction:column;position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff;cursor:none;box-shadow:0 30px 60px -34px rgba(15,23,36,.4);transition:transform .8s var(--ease),box-shadow .8s var(--ease)}
+.shot:hover{transform:translateY(-6px);box-shadow:0 46px 80px -34px rgba(15,23,36,.5)}
+.shot .bar{display:flex;align-items:center;gap:7px;height:34px;padding:0 14px;background:#eeece7;border-bottom:1px solid var(--line);flex:none}
+.shot .bar i{width:9px;height:9px;border-radius:50%;background:#d3d0c8}
+.shot .bar span{margin:0 auto;font-size:.7rem;color:var(--dim);background:#fff;border-radius:6px;padding:3px 14px;letter-spacing:.02em;transform:translateX(-18px)}
+.shot .view{position:relative;aspect-ratio:16/10;overflow:hidden}
+.shot .hint{position:absolute;right:12px;bottom:12px;z-index:3;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(15,26,43,.8);color:#fff;padding:5px 11px;border-radius:100px;transition:opacity .3s}
+.shot:hover .hint{opacity:0}
+
+.shot .lab{position:absolute;left:0;top:0;z-index:4;background:var(--navy);color:#fff;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:14px 20px;border-radius:100px;pointer-events:none;opacity:0;transform:translate(-50%,-50%) scale(.6);transition:opacity .3s,scale .3s;white-space:nowrap}
+.shot:hover .lab{opacity:1}
+.proj .n{font-size:.78rem;letter-spacing:.16em;color:var(--dim)}
+.proj h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,3.2vw,2.8rem);line-height:1.08;margin:14px 0 12px;letter-spacing:-.015em}
+.proj p{color:var(--dim);max-width:38ch}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 26px}
+.tags span{font-size:.72rem;letter-spacing:.08em;border:1px solid var(--line);border-radius:100px;padding:5px 13px;color:var(--dim)}
+.link{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;gap:12px;border-bottom:1px solid var(--ink);padding-bottom:4px;transition:gap .4s var(--ease),color .3s,border-color .3s;margin-right:22px}
+.link:hover{gap:20px;color:var(--acc);border-color:var(--acc)}
+/* services interactive */
+.dark{background:var(--navy);color:#eef0f4}
+.dark .eyebrow{color:rgba(238,240,244,.55)}.dark h2 em{color:var(--acc2)}.dark .head p{color:rgba(238,240,244,.65)}
+.svc{display:grid;grid-template-columns:1fr 1.05fr;gap:6vw;align-items:start}
+.svc ul{list-style:none;border-top:1px solid rgba(238,240,244,.22)}
+.svc li{display:grid;grid-template-columns:54px 1fr auto;align-items:baseline;padding:22px 0;border-bottom:1px solid rgba(238,240,244,.14);cursor:pointer;color:rgba(238,240,244,.5);transition:color .35s,padding .5s var(--ease)}
+.svc li small{font-size:.75rem;letter-spacing:.14em}
+.svc li span{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,2rem);letter-spacing:-.01em}
+.svc li i{font-style:normal;opacity:0;transform:translateX(-10px);transition:.4s;color:var(--acc2)}
+.svc li.on,.svc li:hover{color:#fff;padding-left:12px}
+.svc li.on i{opacity:1;transform:none}
+.panel{position:sticky;top:14vh;border:1px solid rgba(238,240,244,.18);border-radius:18px;padding:clamp(24px,3vw,44px);background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));min-height:400px}
+.panel .in{transition:opacity .35s,transform .45s var(--ease)}
+.panel.sw .in{opacity:0;transform:translateY(14px)}
+.panel .num{font-family:var(--serif);font-size:4.4rem;line-height:1;color:var(--acc2)}
+.panel h3{font-family:var(--serif);font-weight:400;font-size:2rem;margin:22px 0 10px}
+.panel p{color:rgba(238,240,244,.7);margin-bottom:22px;max-width:46ch}
+.panel ul{border-top:1px solid rgba(238,240,244,.16)}
+.panel ul li{cursor:default;display:block;padding:10px 0;font-size:.95rem;color:rgba(238,240,244,.85);border-bottom:1px solid rgba(238,240,244,.1)}
+.panel ul li::before{content:"✓";color:var(--acc2);margin-right:12px}
+.panel ul li:hover{padding-left:0;color:rgba(238,240,244,.85)}
+.panel .time{margin-top:20px;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(238,240,244,.55)}
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,30px);position:relative}
+.step{padding-top:22px;position:relative}
+.step::before{content:"";position:absolute;left:0;top:0;height:1px;width:100%;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform 1.4s var(--ease);transition-delay:var(--d,0s)}
+.step.in::before{transform:scaleX(1)}
+.step .k{font-family:var(--serif);font-size:2.6rem;color:var(--acc);line-height:1}
+.step h3{font-family:var(--serif);font-weight:400;font-size:1.4rem;margin:22px 0 8px}
+.step p{color:var(--dim);font-size:.95rem}
+/* about */
+.about{display:grid;grid-template-columns:1fr 1.3fr;gap:8vw;align-items:start}
+.about p{color:var(--dim);font-size:1.08rem;max-width:52ch}.about p+p{margin-top:1.2em}
+.facts{display:grid;grid-template-columns:1fr 1fr;margin-top:44px;border-top:1px solid var(--line)}
+.facts div{padding:20px 0;border-bottom:1px solid var(--line)}
+.facts b{display:block;font-family:var(--serif);font-weight:400;font-size:1.6rem}
+.facts span{font-size:.82rem;color:var(--dim)}
+/* contact */
+.contact{background:var(--navy);color:#eef0f4;border-radius:30px;margin:0 1.5vw 1.5vw;padding:14vh 0 7vh;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(500px circle at var(--cx,50%) var(--cy,30%),rgba(209,178,122,.16),transparent 70%);pointer-events:none}
+.contact .wrap{position:relative}
+.contact .eyebrow{color:rgba(238,240,244,.55)}
+.contact a.mail{display:block;font-family:var(--serif);font-size:clamp(2.4rem,8.6vw,8.4rem);line-height:.98;letter-spacing:-.035em;margin:26px 0 7vh;transition:color .3s}
+.contact a.mail em{color:var(--acc2)}
+.contact a.mail:hover{color:var(--acc2)}
+.row2{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:10vh}
+.contact .btn{background:#f6f5f2;color:var(--navy)}.contact .btn:hover{background:var(--acc2)}
+.contact .btn.ghost{background:transparent;color:#f6f5f2;border:1px solid rgba(238,240,244,.4)}.contact .btn.ghost:hover{background:#f6f5f2;color:var(--navy)}
+.contact .bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;color:rgba(238,240,244,.5);font-size:.85rem;border-top:1px solid rgba(238,240,244,.14);padding-top:26px}
+.rv{opacity:0;transform:translateY(28px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:960px){.nav ul li:not(:last-child){display:none}.hero .g,.svc,.about{grid-template-columns:1fr}.stack{display:none}.proj,.proj:nth-child(even){position:relative;top:0;grid-template-columns:1fr}.proj:nth-child(even) .shot{order:0}.shot{cursor:pointer}.steps{grid-template-columns:1fr 1fr}.panel{position:relative;top:0;min-height:0}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.fade{opacity:1;transform:none}h1 .ln>span{transform:none}#loader{display:none}.step::before{transform:scaleX(1)}}
+</style>
+</head>
+<body class="lock">
+<div id="loader"><div>Alexandre<span>.</span></div></div>
+<div id="prog"></div>
+
+<header class="nav" id="nav"><div class="wrap in">
+  <a class="logo" href="#top">Alexandre<span>.</span></a>
+  <ul><li><a href="#work">Work</a></li><li><a href="#services">Services</a></li><li><a href="#process">Process</a></li><li><a href="#about">About</a></li><li><a class="pill mag" href="#contact">Get in touch</a></li></ul>
+</div></header>
+
+<section class="hero" id="top" style="padding-bottom:9vh"><div class="wrap"><div class="g">
+  <div>
+    <div class="chip fade" style="--d:.3s"><i></i>Available for new projects · <span id="clock">Portugal</span></div>
+    <h1><span class="ln"><span>Websites that</span></span><span class="ln"><span>look <em>expensive.</em></span></span><span class="ln"><span>Numbers that <em>make sense.</em></span></span></h1>
+    <p class="lede fade" style="--d:.7s">I design premium websites and build clear financial reports for brands, SMEs and independent professionals. Fast turnaround, precise delivery, in English and Portuguese.</p>
+    <div class="cta fade" style="--d:.85s"><a class="btn mag" href="#work">See the work <span>→</span></a><a class="btn ghost mag" href="#contact">Start a project</a></div>
+    <div class="ticks fade" style="--d:1s"><span>Fixed pricing</span><span>Delivery in days</span><span>Personally reviewed</span></div>
+  </div>
+  <div class="stack fade" style="--d:.6s"><div class="plane" id="plane">
+    <div class="card3 k1"><iframe src="casa-alvarenga.html" title="" loading="lazy" tabindex="-1"></iframe><b>Hospitality</b></div>
+    <div class="card3 k2"><iframe src="reis-associates.html" title="" loading="lazy" tabindex="-1"></iframe><b>Legal</b></div>
+    <div class="card3 k3"><iframe src="financial-report.html" title="" loading="lazy" tabindex="-1"></iframe><b>Reporting</b></div>
+  </div></div>
+</div></div></section>
+
+<section id="work" style="padding-top:6vh"><div class="wrap">
+  <div class="head"><div><div class="eyebrow rv">Selected work</div><h2 class="rv">Concept projects, <em>built properly.</em></h2></div><p class="rv" style="--d:.1s">Three fictional clients, each with its own brief and identity. Scroll through them, or open any project in full.</p></div>
+  <div class="work">
+    <div class="proj" style="--i:0"><a class="shot" href="casa-alvarenga.html" aria-label="Open Casa Alvarenga"><div class="bar"><i></i><i></i><i></i><span>casa-alvarenga</span></div><div class="view"><span class="hint">Hover to preview</span><iframe src="casa-alvarenga.html" title="Casa Alvarenga preview" loading="lazy" tabindex="-1"></iframe></div><span class="lab">Open project ↗</span></a>
+      <div><span class="n">01 — Hospitality</span><h3>Casa Alvarenga</h3><p>A boutique hotel in the Gerês mountains. A calm, editorial site built to make guests want to book.</p><div class="tags"><span>Website</span><span>Art direction</span><span>Booking flow</span></div><a class="link" href="casa-alvarenga.html">View project <span>→</span></a></div></div>
+    <div class="proj" style="--i:1"><a class="shot" href="reis-associates.html" aria-label="Open Reis and Associates"><div class="bar"><i></i><i></i><i></i><span>reis-associates</span></div><div class="view"><span class="hint">Hover to preview</span><iframe src="reis-associates.html" title="Reis and Associates preview" loading="lazy" tabindex="-1"></iframe></div><span class="lab">Open project ↗</span></a>
+      <div><span class="n">02 — Professional services</span><h3>Reis &amp; Associates</h3><p>A law firm site that replaces jargon with clarity: three practice areas, a simple method, one obvious next step.</p><div class="tags"><span>Website</span><span>Messaging</span><span>Lead capture</span></div><a class="link" href="reis-associates.html">View project <span>→</span></a></div></div>
+    <div class="proj" style="--i:2"><a class="shot" href="financial-report.html" aria-label="Open Northbridge financial report"><div class="bar"><i></i><i></i><i></i><span>financial-report</span></div><div class="view"><span class="hint">Hover to preview</span><iframe src="financial-report.html" title="Northbridge report preview" loading="lazy" tabindex="-1"></iframe></div><span class="lab">Open report ↗</span></a>
+      <div><span class="n">03 — Financial reporting</span><h3>Northbridge Components</h3><p>A monthly management report for a fictional SME: KPIs, budget vs. actual, cash and plain-English commentary, plus the Excel model behind it.</p><div class="tags"><span>Reporting</span><span>Excel model</span><span>Dashboard</span></div><a class="link" href="financial-report.html">View report <span>→</span></a><a class="link" href="financial-report-northbridge.xlsx">Excel <span>↓</span></a></div></div>
+  </div>
+</div></section>
+
+<section class="dark" id="services"><div class="wrap">
+  <div class="head"><div><div class="eyebrow rv">Services</div><h2 class="rv" style="color:#fff">What I <em>do.</em></h2></div><p class="rv" style="--d:.1s">Fixed prices, clear scope and a defined delivery date on every project. Pick a service to see what is included.</p></div>
+  <div class="svc">
+    <ul id="svclist" class="rv"></ul>
+    <div class="panel rv" id="panel" style="--d:.1s"><div class="in" id="pin"></div></div>
+  </div>
+</div></section>
+
+<section id="process"><div class="wrap">
+  <div class="head"><div><div class="eyebrow rv">Process</div><h2 class="rv">Simple by <em>design.</em></h2></div><p class="rv" style="--d:.1s">No surprises and no jargon. You always know what happens next.</p></div>
+  <div class="steps">
+    <div class="step"><div class="k">01</div><h3>Brief</h3><p>A short call about your goals, audience and constraints.</p></div>
+    <div class="step" style="--d:.15s"><div class="k">02</div><h3>Proposal</h3><p>Scope, fixed price and delivery date in writing within 24 hours.</p></div>
+    <div class="step" style="--d:.3s"><div class="k">03</div><h3>Build</h3><p>A first version fast, then two revision rounds until it is right.</p></div>
+    <div class="step" style="--d:.45s"><div class="k">04</div><h3>Launch</h3><p>Published, tested and handed over, with support if you want it.</p></div>
+  </div>
+</div></section>
+
+<section id="about" style="padding-top:2vh"><div class="wrap about">
+  <div class="rv"><div class="eyebrow">About</div><h2>Small studio, <em>high standards.</em></h2></div>
+  <div class="rv" style="--d:.12s"><p>I work independently from Portugal with clients in Europe and beyond. I care about the details that make a business look credible: the typography, the spacing, the way a number is presented.</p><p>I use modern AI tools to move faster, and I review everything personally before it reaches you, so you get speed without the generic result.</p>
+    <div class="facts"><div><b>EN · PT</b><span>Fluent in both</span></div><div><b>24h</b><span>Reply time</span></div><div><b>Fixed</b><span>Project pricing</span></div><div><b>2</b><span>Revision rounds included</span></div></div></div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <div class="eyebrow">Contact</div>
+  <a class="mail" href="mailto:asilva.ctb@gmail.com">Let's build<br><em>something clear.</em></a>
+  <div class="row2"><a class="btn mag" href="mailto:asilva.ctb@gmail.com">Send an email <span>→</span></a><button class="btn ghost mag" id="copy" type="button">Copy email address</button></div>
+  <div class="bot"><span>asilva.ctb@gmail.com · Replies within one business day</span><span>Brands and figures shown here are fictional concept work. © 2026</span></div>
+</div></section>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+// loader → go
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function start(){$('#loader').classList.add('done');document.body.classList.remove('lock');document.body.classList.add('go')}
+addEventListener('load',()=>setTimeout(start,reduce?0:1500));
+setTimeout(()=>{if(!document.body.classList.contains('go'))start()},4000);
+// clock
+function tick(){try{$('#clock').textContent='Portugal · '+new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Lisbon',hour:'2-digit',minute:'2-digit'}).format(new Date())}catch(e){}}
+tick();setInterval(tick,30000);
+// scroll: progress, nav state, active link
+const nav=$('#nav'),prog=$('#prog');
+function onScroll(){const h=document.documentElement;nav.classList.toggle('solid',scrollY>60);prog.style.width=(scrollY/(h.scrollHeight-innerHeight)*100)+'%'}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+const secs=['work','services','process','about','contact'].map(id=>document.getElementById(id));
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){$$('.nav ul a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s=>so.observe(s));
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+$$('.rv,.step').forEach(el=>io.observe(el));
+// iframe fit
+function fit(){$$('.shot .view,.card3').forEach(s=>{const f=$('iframe',s);if(f)f.style.transform='scale('+(s.clientWidth/1440)+')'})}
+addEventListener('resize',fit);addEventListener('load',fit);fit();
+// hero: spotlight + 3D tilt
+const hero=$('.hero'),plane=$('#plane');
+hero.addEventListener('mousemove',e=>{const r=hero.getBoundingClientRect();hero.style.setProperty('--mx',(e.clientX-r.left)+'px');hero.style.setProperty('--my',(e.clientY-r.top)+'px');
+ const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;plane.style.transform=`rotateX(${8-y*10}deg) rotateY(${-14+x*16}deg)`});
+hero.addEventListener('mouseleave',()=>plane.style.transform='rotateX(8deg) rotateY(-14deg)');
+// cursor label on project shots
+$$('.shot').forEach(s=>{const l=$('.lab',s);s.addEventListener('mousemove',e=>{const r=s.getBoundingClientRect();l.style.left=(e.clientX-r.left)+'px';l.style.top=(e.clientY-r.top)+'px';l.style.transform='translate(-50%,-50%) scale(1)'});s.addEventListener('mouseleave',()=>l.style.transform='translate(-50%,-50%) scale(.6)')});
+// magnetic buttons
+$$('.mag').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.18}px,${(e.clientY-r.top-r.height/2)*.28}px)`});b.addEventListener('mouseleave',()=>b.style.transform='')});
+// services
+const S=[
+['Premium websites','Elegant, fast and responsive sites for hospitality, professional services and independent brands.',['Design direction built around your identity','Up to 5 pages, mobile-first','Contact or booking forms','Launch, domain and hosting setup'],'3–10 days'],
+['Financial reporting','Monthly management reports in plain English, with KPIs, budget vs. actual and clear commentary.',['KPI summary and income statement','Budget vs. actual variance analysis','Cash position and outlook','Delivered as PDF, Excel or slides'],'3 days, monthly'],
+['Excel models & dashboards','Clean, formula-driven models and dashboards you can open, audit and update yourself.',['Structured inputs and transparent formulas','Charts and summary views','Documented assumptions','Handover walkthrough'],'5–7 days'],
+['AI workflow automation','Automations that remove repetitive work: email triage, CRM updates, recurring reports.',['Zapier, Make or n8n workflows','LLM steps with human approval points','Error handling and logging','Simple documentation'],'3–10 days'],
+['Data cleaning & analysis','Messy spreadsheets turned into structured data and clear answers.',['Cleaning and de-duplication','Analysis with charts','Written findings','Reusable clean dataset'],'2–5 days'],
+['Market & competitor research','Focused research reports that answer a specific business question.',['Competitor and pricing scan','Market sizing with sources','Concise written report','Recommended next steps'],'3–7 days'],
+['Business documents & decks','Proposals, SOPs, investor updates and presentations with a polished, consistent look.',['Structure and copy','Consistent visual design','Editable source files','Two revision rounds'],'2–5 days'],
+['Translation & localisation','Natural, precise translation between English and European Portuguese, reviewed by a native speaker.',['PT-PT ↔ EN','Tone matched to your brand','Website and document formats','Glossary for consistent terms'],'1–4 days']];
+const list=$('#svclist'),pin=$('#pin'),panel=$('#panel');
+S.forEach((s,i)=>{const li=document.createElement('li');li.innerHTML=`<small>0${i+1}</small><span>${s[0]}</span><i>→</i>`;li.onmouseenter=li.onclick=()=>show(i);list.appendChild(li)});
+let cur=-1;
+function show(i){if(i===cur)return;cur=i;$$('li',list).forEach((l,j)=>l.classList.toggle('on',j===i));panel.classList.add('sw');
+ setTimeout(()=>{const s=S[i];pin.innerHTML=`<div class="num">0${i+1}</div><h3>${s[0]}</h3><p>${s[1]}</p><ul>${s[2].map(x=>`<li>${x}</li>`).join('')}</ul><div class="time">Typical delivery · ${s[3]}</div>`;panel.classList.remove('sw')},reduce?0:220)}
+show(0);
+// contact: spotlight + copy
+const ct=$('.contact');ct.addEventListener('mousemove',e=>{const r=ct.getBoundingClientRect();ct.style.setProperty('--cx',(e.clientX-r.left)+'px');ct.style.setProperty('--cy',(e.clientY-r.top)+'px')});
+$('#copy').addEventListener('click',async e=>{const b=e.currentTarget;try{await navigator.clipboard.writeText('asilva.ctb@gmail.com');b.textContent='Copied ✓'}catch(_){b.textContent='asilva.ctb@gmail.com'}setTimeout(()=>b.textContent='Copy email address',2200)});
+
+// live preview: scroll the real page inside the frame on hover
+$$('.shot').forEach(s=>{const f=$('iframe',s);let raf=0,y=0,dir=0;
+ function step(){try{const w=f.contentWindow,d=w.document.documentElement,max=d.scrollHeight-w.innerHeight;y+=dir*3.2;y=Math.max(0,Math.min(max,y));w.scrollTo({top:y,behavior:'instant'});if((dir>0&&y<max)||(dir<0&&y>0))raf=requestAnimationFrame(step)}catch(e){}}
+ s.addEventListener('mouseenter',()=>{dir=1;cancelAnimationFrame(raf);raf=requestAnimationFrame(step)});
+ s.addEventListener('mouseleave',()=>{dir=-4;cancelAnimationFrame(raf);raf=requestAnimationFrame(step)})});
+</script>
+</body>
+</html>
