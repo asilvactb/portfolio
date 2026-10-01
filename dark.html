@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alexandre Silva — Websites &amp; Financial Reporting</title>
+<meta name="description" content="Independent designer and analyst. Websites and financial reporting for businesses that care about every detail.">
+<meta name="theme-color" content="#13120F">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#13120F;--bg2:#1A1915;--sand:#D8CDB3;--sand2:#8E8672;--mute:#3B3831;--line:rgba(216,205,179,.12);--f:"Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif;--e:cubic-bezier(.16,1,.3,1);--p:clamp(16px,2.2vw,32px)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--sand);font-family:var(--f);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit;text-decoration:none}::selection{background:var(--sand);color:var(--bg)}
+.lb{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.lb:before{content:"[ "}.lb:after{content:" ]"}
+.mu{color:var(--sand2)}
+/* top bar */
+.top{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:flex-start;padding:var(--p);mix-blend-mode:difference;color:#fff;pointer-events:none}
+.top>*{pointer-events:auto}
+.wm{font-weight:700;letter-spacing:.32em;font-size:.82rem;line-height:1.1;text-transform:uppercase}
+.wm i{display:inline-block;width:.8em;height:.8em;background:currentColor;vertical-align:-.05em;margin-right:.3em}
+/* floating nav */
+.fnav{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:4px;background:rgba(26,25,21,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:8px;padding:5px 5px 5px 14px}
+.fnav a.l{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--sand2);padding:10px 10px;transition:color .3s}
+.fnav a.l:hover,.fnav a.l.on{color:var(--sand)}
+.talk{display:flex;align-items:center;gap:10px;background:var(--sand);color:var(--bg);border-radius:5px;padding:7px 16px 7px 7px;font-weight:700;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;margin-left:10px;transition:transform .4s var(--e)}
+.talk b{width:26px;height:26px;border-radius:3px;background:var(--bg);color:var(--sand);display:grid;place-items:center;font-size:.62rem;letter-spacing:0}
+.talk:hover{transform:translateY(-2px)}
+/* hero */
+.hero{height:100svh;min-height:620px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+#bg{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+.hero .vig{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 40%,transparent 30%,var(--bg) 85%)}
+.slice{position:relative;font-weight:800;letter-spacing:-.02em;text-transform:uppercase;line-height:.86;text-align:center}
+.slice .row{display:block;overflow:hidden;height:.86em}
+.slice .ch{display:inline-block;will-change:transform}
+.hero .slice{font-size:clamp(3.6rem,13.4vw,13.5rem)}
+.hero .corner{position:absolute;bottom:var(--p);font-size:.72rem;color:var(--sand2)}
+.hero .sub{position:absolute;left:50%;transform:translateX(-50%);bottom:13vh;text-align:center;max-width:44ch;color:var(--sand2);font-size:.95rem}
+/* statement + floating frames */
+.st{position:relative;height:320vh}
+.st .pin{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;grid-template-columns:1fr 1.25fr;align-items:center;padding:0 var(--p)}
+.st .lb{align-self:start;margin-top:30vh}
+.big{font-weight:700;font-size:clamp(2rem,4.2vw,4.3rem);line-height:1.02;letter-spacing:-.035em;position:relative;z-index:1}
+.big .w{color:var(--mute);transition:color .35s}.big .w.on{color:var(--sand)}
+.st .small{margin-top:26px;color:var(--sand2);font-size:1rem;position:relative;z-index:1}
+.fl{position:absolute;z-index:2;width:min(31vw,470px);aspect-ratio:1;border-radius:6px;overflow:hidden;background:#222;box-shadow:0 40px 80px -30px rgba(0,0,0,.8);will-change:transform}
+.fl iframe{position:absolute;left:0;top:0;width:1440px;height:1440px;border:0;transform-origin:0 0;pointer-events:none}
+.fl:after{content:"";position:absolute;inset:0;background:rgba(19,18,15,.08)}
+/* case studies */
+.cs{padding:22vh var(--p) 10vh;position:relative}
+.cs>.lb{position:absolute;right:var(--p);top:12vh}
+.case{display:grid;grid-template-columns:1fr 1fr;gap:4vw;min-height:120vh;align-items:start;padding-top:10vh}
+.case .txt{position:sticky;top:22vh;padding-left:calc(25vw - var(--p))}
+.case .n{font-size:clamp(3rem,5vw,5rem);font-weight:500;color:var(--sand2);line-height:1}
+.case h3{font-weight:500;font-size:clamp(1.5rem,2.4vw,2.3rem);line-height:1.2;letter-spacing:-.02em;margin:26px 0 30px;max-width:16ch}
+.case .tags{color:var(--sand2);font-size:.92rem;line-height:1.5;max-width:26ch}
+.case .open{display:inline-flex;gap:10px;margin-top:30px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-bottom:1px solid var(--sand2);padding-bottom:4px;transition:gap .4s var(--e),border-color .3s}
+.case .open:hover{gap:18px;border-color:var(--sand)}
+.shot{display:block;position:relative;border-radius:8px;overflow:hidden;aspect-ratio:4/5;background:#1f1e1a;margin-top:10vh;transform:scale(.92);opacity:.5;transition:transform 1.2s var(--e),opacity 1.2s var(--e)}
+.shot.in{transform:none;opacity:1}
+.shot iframe{position:absolute;left:0;top:0;width:1100px;height:1375px;border:0;transform-origin:0 0;pointer-events:none}
+.shot .tag{position:absolute;left:14px;bottom:14px;z-index:2;background:rgba(19,18,15,.85);padding:8px 12px;border-radius:4px;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+/* principles: giant sliced text with stacked cards */
+.pr{position:relative;height:340vh}
+.pr .pin{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.pr .lb{position:absolute;top:12vh}
+.pr .slice{font-size:clamp(3.6rem,12vw,12rem)}
+.cards{position:absolute;left:50%;top:54%;width:min(380px,86vw);height:0}
+.card{position:absolute;left:0;top:0;width:100%;transform:translate(-50%,120vh);background:linear-gradient(180deg,rgba(40,38,32,.96),rgba(26,25,21,.98));border:1px solid var(--line);border-radius:8px;padding:26px;backdrop-filter:blur(8px);will-change:transform}
+.card .n{font-size:3rem;font-weight:500;line-height:1;margin-bottom:24px}
+.card p{font-size:1.2rem;line-height:1.4;letter-spacing:-.01em}
+.card .by{margin-top:26px;display:flex;gap:12px;align-items:center;color:var(--sand2);font-size:.85rem}
+.card .by b{width:34px;height:34px;border-radius:4px;background:var(--sand);color:var(--bg);display:grid;place-items:center;font-size:.8rem}
+/* about */
+.ab{padding:24vh var(--p) 10vh}
+.ab .big{max-width:17ch}
+.ab .grid{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:3vw;margin-top:12vh;align-items:start}
+.portrait{aspect-ratio:4/5;border-radius:6px;background:radial-gradient(90% 70% at 50% 30%,#3a3629,#1a1915);position:relative;overflow:hidden;display:grid;place-items:center}
+.portrait span{font-weight:800;font-size:clamp(5rem,12vw,11rem);letter-spacing:-.04em;color:rgba(216,205,179,.12)}
+.portrait small{position:absolute;left:14px;bottom:14px;color:var(--sand2);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+.ab p.bio{color:var(--sand2);max-width:36ch;font-size:.98rem}
+.skills{border-top:1px solid var(--line);margin-top:14vh;padding-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:end}
+.skills p{color:var(--sand2);max-width:44ch;font-size:.95rem}
+.btn2{justify-self:end;border:1px solid var(--line);border-radius:5px;padding:12px 18px;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;transition:background .3s,color .3s}
+.btn2:hover{background:var(--sand);color:var(--bg)}
+/* footer */
+footer{padding:24vh var(--p) 90px}
+.fg{display:grid;grid-template-columns:1.2fr 1fr;gap:4vw;align-items:start}
+.fwm{font-weight:700;letter-spacing:.24em;font-size:clamp(2.4rem,5.4vw,5.4rem);line-height:1.02;text-transform:uppercase}
+.fwm i{display:inline-block;width:.78em;height:.78em;background:var(--sand);vertical-align:-.04em;margin-right:.2em;border-radius:3px}
+.ready{justify-self:end}
+.ready h2{font-weight:500;font-size:clamp(2rem,3.4vw,3.2rem);letter-spacing:-.02em;line-height:1.1}
+.ready a{display:block;font-size:clamp(1.1rem,1.6vw,1.5rem);color:var(--sand2);margin-top:12px;transition:color .3s}.ready a:hover{color:var(--sand)}
+.cols{display:flex;gap:10vw;margin-top:10vh}
+.cols div a{display:block;font-size:clamp(1.3rem,2vw,1.8rem);font-weight:500;line-height:1.55;transition:color .3s}.cols div a:hover{color:var(--sand2)}
+.minis{display:flex;gap:18px;justify-self:end;margin-top:10vh}
+.minis div{width:140px;height:140px;border:1px solid var(--line);border-radius:6px;background:linear-gradient(180deg,var(--bg2),#211f1a);padding:16px;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:var(--sand2);position:relative;overflow:hidden}
+.minis div:after{content:"";position:absolute;left:10%;right:10%;bottom:-40%;height:70%;background:radial-gradient(closest-side,rgba(216,205,179,.18),transparent)}
+.fb{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin-top:8vh;padding-top:22px;font-size:.75rem;color:var(--sand2);text-transform:uppercase;letter-spacing:.04em}
+@media(max-width:900px){.fnav a.l{display:none}.st{height:auto}.st .pin{position:relative;height:auto;grid-template-columns:1fr;padding:18vh var(--p)}.st .lb{margin:0 0 30px}.fl{display:none}.case{grid-template-columns:1fr;min-height:0}.case .txt{position:relative;top:0;padding-left:0}.pr{height:auto}.pr .pin{position:relative;height:auto;padding:16vh 0}.cards{position:relative;left:auto;top:auto;height:auto;width:auto;display:grid;gap:14px;margin-top:40px;padding:0 var(--p)}.card{position:relative;transform:none!important;width:auto}.ab .grid,.skills,.fg{grid-template-columns:1fr}.btn2,.ready,.minis{justify-self:start}.cs>.lb{position:relative;top:0;right:0;display:block;margin-bottom:20px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="top"><a class="wm" href="#top">Alexandre<br><i></i>Silva</a><a class="lb" href="mailto:asilva.ctb@gmail.com" style="text-transform:none;letter-spacing:.02em">asilva.ctb@gmail.com</a></div>
+<nav class="fnav"><a class="l" href="#work">Projects</a><a class="l" href="#about">About</a><a class="l" href="#principles">Approach</a><a class="talk" href="mailto:asilva.ctb@gmail.com"><b>AS</b>Let's talk</a></nav>
+
+<section class="hero" id="top">
+  <canvas id="bg" aria-hidden="true"></canvas><div class="vig"></div>
+  <div class="slice" data-slice="hero"><span class="row">Websites &amp;</span><span class="row">Numbers</span><span class="row">that work</span></div>
+  <p class="sub">Independent designer and analyst. Websites and financial reporting for businesses that care about every detail.</p>
+  <span class="corner" style="left:var(--p)">Braga, Portugal</span><span class="corner" style="right:var(--p)">Scroll</span>
+</section>
+
+<section class="st" id="st">
+  <div class="pin">
+    <span class="lb mu">What I do</span>
+    <div><p class="big" id="stmt">Websites that sell and reports that decide, crafted for businesses that care about every detail.</p><p class="small">Four industries, four design languages. Every brand shown is a fictional concept project.</p></div>
+    <a class="fl" href="halden.html" data-sp="1.15" data-x="3%" data-y0="110"><iframe data-src="halden.html" tabindex="-1" title=""></iframe></a>
+    <a class="fl" href="grao.html" data-sp="0.85" data-x="70%" data-y0="150"><iframe data-src="grao.html" tabindex="-1" title=""></iframe></a>
+    <a class="fl" href="ossa.html" data-sp="1.3" data-x="20%" data-y0="210"><iframe data-src="ossa.html" tabindex="-1" title=""></iframe></a>
+    <a class="fl" href="nodal.html" data-sp="1" data-x="66%" data-y0="290"><iframe data-src="nodal.html" tabindex="-1" title=""></iframe></a>
+  </div>
+</section>
+
+<section class="cs" id="work">
+  <span class="lb mu">Case studies</span>
+  <div id="cases"></div>
+</section>
+
+<section class="pr" id="principles">
+  <div class="pin">
+    <span class="lb mu">Approach</span>
+    <div class="slice" data-slice="pr"><span class="row">Details</span><span class="row">do the</span><span class="row">selling</span></div>
+    <div class="cards" id="cards">
+      <div class="card"><div class="n">1</div><p>Every project starts with the business, not the pixels: who buys, why, and what they need to see first.</p><div class="by"><b>01</b>Strategy first</div></div>
+      <div class="card"><div class="n">2</div><p>Fixed price and a delivery date in writing within 24 hours. No surprises, no endless hourly billing.</p><div class="by"><b>02</b>Clear terms</div></div>
+      <div class="card"><div class="n">3</div><p>Motion, type and spacing are tuned by hand until the page feels inevitable. Then it is tested on every screen.</p><div class="by"><b>03</b>Craft</div></div>
+      <div class="card"><div class="n">4</div><p>Numbers get the same care as design: clean models, honest charts and commentary a founder can act on.</p><div class="by"><b>04</b>Clarity</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="ab" id="about">
+  <p class="big" id="abt">I'm Alexandre, a designer and analyst with 8+ years running and fixing real businesses.</p>
+  <div class="grid">
+    <span class="lb mu">My start</span>
+    <div class="portrait"><span>AS</span><small>Photo coming soon</small></div>
+    <p class="bio">I led turnarounds, built financial models and sat in board and investor meetings before focusing on design. That mix shapes how I work: every website has a business goal, and every report has a decision behind it.</p>
+  </div>
+  <div class="skills">
+    <div><span class="lb mu">What I do best</span><p style="margin-top:22px">Web design, Landing pages, Art direction, Financial reporting, Excel models, Dashboards, Strategy, AI automation, Pitch decks, PT ↔ EN.</p></div>
+    <a class="btn2" href="mailto:asilva.ctb@gmail.com">Request CV</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fg"><div class="fwm">Alexandre<br><i></i>Silva</div>
+    <div class="ready"><h2>Ready to start?</h2><a href="mailto:asilva.ctb@gmail.com">asilva.ctb@gmail.com</a><a href="index.html">Light version ↗</a></div></div>
+  <div class="fg"><div class="cols"><div><span class="lb mu" style="display:block;margin-bottom:16px">Site</span><a href="#top">Home</a><a href="#work">Projects</a><a href="#principles">Approach</a><a href="#about">About</a></div><div><span class="lb mu" style="display:block;margin-bottom:16px">Work</span><a href="halden.html">Halden</a><a href="ossa.html">OSSA</a><a href="grao.html">Grão</a><a href="nodal.html">Nodal</a></div></div>
+    <div class="minis"><div>Websites that sell</div><div>Numbers that decide</div></div></div>
+  <div class="fb"><span>© 2026 Alexandre Silva</span><a href="#top">Back to top</a></div>
+</footer>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches,MOB=()=>innerWidth<=900;
+/* hero background: slow drifting sand grain field */
+(function(){const c=$('#bg'),x=c.getContext('2d');let W,H,d,t=0;function rs(){d=Math.min(2,devicePixelRatio||1);W=c.clientWidth;H=c.clientHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0)}rs();addEventListener('resize',rs);
+ let mx=.5,my=.5;addEventListener('mousemove',e=>{mx=e.clientX/innerWidth;my=e.clientY/innerHeight});
+ (function f(){x.clearRect(0,0,W,H);const g=34;for(let X=0;X<W+g;X+=g)for(let Y=0;Y<H+g;Y+=g){const dx=X/W-mx,dy=Y/H-my,dd=Math.sqrt(dx*dx+dy*dy);const s=Math.sin(X*.012+t)*Math.cos(Y*.015-t*.8);const r=1+1.6*(s+1)/2+Math.max(0,.3-dd)*9;x.fillStyle=`rgba(216,205,179,${.08+.25*Math.max(0,.35-dd)})`;x.fillRect(X-r/2,Y-r/2,r,r)}
+  if(!RM)t+=.008;if(scrollY<innerHeight)requestAnimationFrame(f);else setTimeout(()=>requestAnimationFrame(f),300)})()})();
+/* sliced letters: each char rises into its row, driven by load (hero) or scroll (approach) */
+$$('[data-slice]').forEach(el=>$$('.row',el).forEach((r,ri)=>{r.innerHTML=[...r.textContent].map((c,i)=>`<span class="ch" data-o="${((i*37+ri*11)%9)/9}">${c===' '?'&nbsp;':c}</span>`).join('')}));
+function slice(el,p){$$('.ch',el).forEach(c=>{const o=+c.dataset.o;const k=Math.min(1,Math.max(0,(p-o*.45)/.55));c.style.transform=`translateY(${(1-k)*100}%)`})}
+let hp=0;const hero=$('[data-slice="hero"]');(function h(){hp=Math.min(1,hp+.012);slice(hero,1-Math.pow(1-hp,3));if(hp<1&&!RM)requestAnimationFrame(h);else slice(hero,1)})();
+/* word fill */
+function words(el){el.innerHTML=el.textContent.split(' ').map(w=>`<span class="w">${w}</span>`).join(' ');return $$('.w',el)}
+const W1=words($('#stmt')),W2=words($('#abt'));
+function fill(ws,el,a,b){const r=el.getBoundingClientRect();const p=Math.min(1,Math.max(0,(innerHeight*a-r.top)/(innerHeight*b)));ws.forEach((w,i)=>w.classList.toggle('on',i<p*ws.length))}
+/* floating frames around the statement */
+const st=$('#st'),fls=$$('.fl');let loaded=false;
+function frames(){if(MOB())return;const r=st.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/(st.offsetHeight-innerHeight)));if(!loaded&&r.top<innerHeight*1.5){fls.forEach(f=>{const i=$('iframe',f);i.src=i.dataset.src});loaded=true}
+ fls.forEach(f=>{const sp=+f.dataset.sp,y0=+f.dataset.y0;const y=(y0-p*260*sp)*innerHeight/100;f.style.transform=`translate3d(0,${y}px,0)`;f.style.left=f.dataset.x;f.style.top='0'})}
+function scaleF(){fls.forEach(f=>{$('iframe',f).style.transform=`scale(${f.clientWidth/1440})`})}
+/* case studies */
+const C=[['halden.html','A dark, patient website for a private wealth office that moves slower than the market, on purpose.','Private wealth · Web design · Data visualisation'],['ossa.html','A brutalist studio site where every project is drawn, not photographed.','Architecture · Art direction · Technical drawing'],['grao.html','A playful coffee shop with a flavour wheel that sells the right bag to the right person.','E-commerce · Brand · Interaction design'],['nodal.html','A product site that shows the software working before you sign up.','AI software · Product marketing · Motion'],['financial-report.html','A monthly management report a founder can read in five minutes, with the Excel model behind it.','Financial reporting · Excel · Dashboards']];
+$('#cases').innerHTML=C.map((c,i)=>`<div class="case"><div class="txt"><div class="n">${i+1}</div><h3>${c[1]}</h3><p class="tags">${c[2]}</p><a class="open" href="${c[0]}">View project <span>→</span></a></div><a class="shot" href="${c[0]}"><iframe data-src="${c[0]}" loading="lazy" tabindex="-1" title=""></iframe><span class="tag">${['Halden','OSSA','Grão','Nodal','Northbridge'][i]}</span></a></div>`).join('');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const s=e.target;s.classList.add('in');const f=$('iframe',s);if(!f.src)f.src=f.dataset.src;f.style.transform=`scale(${s.clientWidth/1100})`;io.unobserve(s)}}),{rootMargin:'40% 0px'});
+$$('.shot').forEach(s=>io.observe(s));
+/* approach: sliced text + stacked cards */
+const pr=$('#principles'),prs=$('[data-slice="pr"]'),cards=$$('.card');
+function approach(){if(MOB()){slice(prs,1);return}const r=pr.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/(pr.offsetHeight-innerHeight)));slice(prs,Math.min(1,p/.3));
+ cards.forEach((c,i)=>{const s=.28+i*.16,k=Math.min(1,Math.max(0,(p-s)/.16));const y=(1-k)*innerHeight*1.2 - i*0;c.style.transform=`translate(-50%,calc(-50% + ${y}px + ${i*14}px)) scale(${1-(cards.length-1-i)*0}) `;c.style.zIndex=i})}
+/* scroll loop */
+function onS(){fill(W1,$('#stmt'),.85,.9);fill(W2,$('#abt'),.9,.7);frames();approach();const y=scrollY;$$('.fnav a.l').forEach(a=>{const t=$(a.getAttribute('href'));if(!t)return;const r=t.getBoundingClientRect();a.classList.toggle('on',r.top<innerHeight*.5&&r.bottom>innerHeight*.5)})}
+addEventListener('scroll',onS,{passive:true});addEventListener('resize',()=>{scaleF();onS()});scaleF();onS();
+</script>
+</body>
+</html>
