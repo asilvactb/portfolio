@@ -26,18 +26,20 @@ a{color:inherit;text-decoration:none}::selection{background:var(--sand);color:va
 .fnav a.l{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--sand2);padding:10px 10px;transition:color .3s}
 .fnav a.l:hover,.fnav a.l.on{color:var(--sand)}
 .talk{display:flex;align-items:center;gap:10px;background:var(--acc);color:var(--onacc);border-radius:5px;padding:7px 16px 7px 7px;font-weight:700;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;margin-left:10px;transition:transform .4s var(--e)}
-.talk b{width:26px;height:26px;border-radius:3px;background:var(--onacc);color:var(--acc);display:grid;place-items:center;font-size:.62rem;letter-spacing:0}
+.talk b{width:26px;height:26px;border-radius:3px;background-size:cover!important;background-position:50% 30%!important;color:transparent!important;background:var(--onacc);color:var(--acc);display:grid;place-items:center;font-size:.62rem;letter-spacing:0}
 .talk:hover{transform:translateY(-2px)}
 /* hero */
 .hero{height:100svh;min-height:620px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
 #bg{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+.hero .me{position:absolute;left:50%;bottom:0;height:min(96vh,980px);aspect-ratio:1;transform:translateX(-50%);object-fit:cover;filter:brightness(.9);-webkit-mask-image:radial-gradient(closest-side at 50% 55%,#000 62%,transparent 100%);mask-image:radial-gradient(closest-side at 50% 55%,#000 62%,transparent 100%);opacity:0;transition:opacity 1.6s var(--e);will-change:transform}
+.hero .me.on{opacity:1}
 .hero .vig{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 40%,transparent 30%,var(--bg) 85%)}
 .slice{position:relative;font-weight:800;letter-spacing:-.02em;text-transform:uppercase;line-height:.86;text-align:center}
 .slice .row{display:block;overflow:hidden;height:.86em}
 .slice .ch{display:inline-block;will-change:transform}
 .hero .slice{font-size:clamp(3.6rem,13.4vw,13.5rem)}
 .hero .corner{position:absolute;bottom:var(--p);font-size:.72rem;color:var(--sand2)}
-.hero .sub{position:absolute;left:50%;transform:translateX(-50%);bottom:13vh;text-align:center;max-width:44ch;color:var(--sand2);font-size:.95rem}
+.hero .sub{text-shadow:0 2px 18px rgba(var(--br),.9);position:absolute;left:50%;transform:translateX(-50%);bottom:13vh;text-align:center;max-width:44ch;color:var(--sand2);font-size:.95rem}
 /* statement + floating frames */
 .st{position:relative;height:320vh}
 .st .pin{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;grid-template-columns:1fr 1.25fr;align-items:center;padding:0 var(--p)}
@@ -77,9 +79,12 @@ a{color:inherit;text-decoration:none}::selection{background:var(--sand);color:va
 .ab{padding:24vh var(--p) 10vh}
 .ab .big{max-width:17ch}
 .ab .grid{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:3vw;margin-top:12vh;align-items:start}
-.portrait{aspect-ratio:4/5;border-radius:6px;background:radial-gradient(90% 70% at 50% 30%,rgba(var(--sr),.14),var(--bg2));position:relative;overflow:hidden;display:grid;place-items:center}
+.portrait{aspect-ratio:4/5;position:relative;display:grid;place-items:center}.portrait .ph{position:absolute;inset:-6% -10% 0;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 24%,#000 76%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 14%,#000 58%,transparent 96%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 24%,#000 76%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 14%,#000 58%,transparent 96%);mask-composite:intersect}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;transform:scale(1.06);transition:transform 1.4s var(--e)}
+.portrait:hover img{transform:scale(1)}
+.portrait small{z-index:1}
 .portrait span{font-weight:800;font-size:clamp(5rem,12vw,11rem);letter-spacing:-.04em;color:rgba(var(--sr),.12)}
-.portrait small{position:absolute;left:14px;bottom:14px;color:var(--sand2);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+.portrait small{position:absolute;left:50%;transform:translateX(-50%);bottom:2%;white-space:nowrap;color:var(--sand2);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
 .ab p.bio{color:var(--sand2);max-width:36ch;font-size:.98rem}
 .skills{border-top:1px solid var(--line);margin-top:14vh;padding-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:end}
 .skills p{color:var(--sand2);max-width:44ch;font-size:.95rem}
@@ -105,10 +110,10 @@ footer{padding:24vh var(--p) 90px}
 </head>
 <body>
 <div class="top"><a class="wm" href="#top">Alexandre<br><i></i>Silva</a><a class="lb" href="mailto:asilva.ctb@gmail.com" style="text-transform:none;letter-spacing:.02em">asilva.ctb@gmail.com</a></div>
-<nav class="fnav"><a class="l" href="#work">Projects</a><a class="l" href="#about">About</a><a class="l" href="#principles">Approach</a><a class="talk" href="mailto:asilva.ctb@gmail.com"><b>AS</b>Let's talk</a></nav>
+<nav class="fnav"><a class="l" href="#work">Projects</a><a class="l" href="#about">About</a><a class="l" href="#principles">Approach</a><a class="talk" href="mailto:asilva.ctb@gmail.com"><b style="background:url(me.jpg)">AS</b>Let's talk</a></nav>
 
 <section class="hero" id="top">
-  <canvas id="bg" aria-hidden="true"></canvas><div class="vig"></div>
+  <canvas id="bg" aria-hidden="true"></canvas><img class="me" id="me" src="me-hero.jpg" alt="Alexandre Silva"><div class="vig"></div>
   <div class="slice" data-slice="hero"><span class="row">Websites &amp;</span><span class="row">Numbers</span><span class="row">that work</span></div>
   <p class="sub">Independent designer and analyst. Websites and financial reporting for businesses that care about every detail.</p>
   <span class="corner" style="left:var(--p)">Braga, Portugal</span><span class="corner" style="right:var(--p)">Scroll</span>
@@ -117,7 +122,7 @@ footer{padding:24vh var(--p) 90px}
 <section class="st" id="st">
   <div class="pin">
     <span class="lb mu">What I do</span>
-    <div><p class="big" id="stmt">Websites that sell and reports that decide, crafted for businesses that care about every detail.</p><p class="small">Four industries, four design languages. Every brand shown is a fictional concept project.</p></div>
+    <div><p class="big" id="stmt">Websites that sell and reports that decide, crafted for businesses that care about every detail.</p><p class="small">A live product I co-founded, plus four concept sites in four industries, each with its own design language.</p></div>
     <a class="fl" href="halden.html" data-sp="1.15" data-x="3%" data-y0="110"><iframe data-src="halden.html" tabindex="-1" title=""></iframe></a>
     <a class="fl" href="grao.html" data-sp="0.85" data-x="70%" data-y0="150"><iframe data-src="grao.html" tabindex="-1" title=""></iframe></a>
     <a class="fl" href="ossa.html" data-sp="1.3" data-x="20%" data-y0="210"><iframe data-src="ossa.html" tabindex="-1" title=""></iframe></a>
@@ -147,7 +152,7 @@ footer{padding:24vh var(--p) 90px}
   <p class="big" id="abt">I'm Alexandre, a designer and analyst with 8+ years running and fixing real businesses.</p>
   <div class="grid">
     <span class="lb mu">My start</span>
-    <div class="portrait"><span>AS</span><small>Photo coming soon</small></div>
+    <div class="portrait"><div class="ph"><img src="me-hero.jpg" alt="Alexandre Silva" loading="lazy"></div><small>Braga, Portugal</small></div>
     <p class="bio">I led turnarounds, built financial models and sat in board and investor meetings before focusing on design. That mix shapes how I work: every website has a business goal, and every report has a decision behind it.</p>
   </div>
   <div class="skills">
@@ -159,7 +164,7 @@ footer{padding:24vh var(--p) 90px}
 <footer>
   <div class="fg"><div class="fwm">Alexandre<br><i></i>Silva</div>
     <div class="ready"><h2>Ready to start?</h2><a href="mailto:asilva.ctb@gmail.com">asilva.ctb@gmail.com</a><a href="studio.html">Light version ↗</a></div></div>
-  <div class="fg"><div class="cols"><div><span class="lb mu" style="display:block;margin-bottom:16px">Site</span><a href="#top">Home</a><a href="#work">Projects</a><a href="#principles">Approach</a><a href="#about">About</a></div><div><span class="lb mu" style="display:block;margin-bottom:16px">Work</span><a href="halden.html">Halden</a><a href="ossa.html">OSSA</a><a href="grao.html">Grão</a><a href="nodal.html">Nodal</a></div></div>
+  <div class="fg"><div class="cols"><div><span class="lb mu" style="display:block;margin-bottom:16px">Site</span><a href="#top">Home</a><a href="#work">Projects</a><a href="#principles">Approach</a><a href="#about">About</a></div><div><span class="lb mu" style="display:block;margin-bottom:16px">Work</span><a href="https://hellomateria.com" target="_blank" rel="noopener">MATERIA</a><a href="halden.html">Halden</a><a href="ossa.html">OSSA</a><a href="grao.html">Grão</a><a href="nodal.html">Nodal</a></div></div>
     <div class="minis"><div>Websites that sell</div><div>Numbers that decide</div></div></div>
   <div class="fb"><span>© 2026 Alexandre Silva</span><a href="#top">Back to top</a></div>
 </footer>
@@ -176,6 +181,7 @@ const SR=getComputedStyle(document.documentElement).getPropertyValue('--sr').tri
 /* sliced letters: each char rises into its row, driven by load (hero) or scroll (approach) */
 $$('[data-slice]').forEach(el=>$$('.row',el).forEach((r,ri)=>{r.innerHTML=[...r.textContent].map((c,i)=>`<span class="ch" data-o="${((i*37+ri*11)%9)/9}">${c===' '?'&nbsp;':c}</span>`).join('')}));
 function slice(el,p){$$('.ch',el).forEach(c=>{const o=+c.dataset.o;const k=Math.min(1,Math.max(0,(p-o*.45)/.55));c.style.transform=`translateY(${(1-k)*100}%)`})}
+const meI=$('#me');if(meI.complete)meI.classList.add('on');else meI.onload=()=>meI.classList.add('on');addEventListener('scroll',()=>{if(scrollY<innerHeight)meI.style.transform=`translateX(-50%) translateY(${scrollY*.25}px) scale(${1+scrollY/innerHeight*.08})`},{passive:true});
 let hp=0;const hero=$('[data-slice="hero"]');(function h(){hp=Math.min(1,hp+.012);slice(hero,1-Math.pow(1-hp,3));if(hp<1&&!RM)requestAnimationFrame(h);else slice(hero,1)})();
 /* word fill */
 function words(el){el.innerHTML=el.textContent.split(' ').map(w=>`<span class="w">${w}</span>`).join(' ');return $$('.w',el)}
@@ -187,8 +193,8 @@ function frames(){if(MOB())return;const r=st.getBoundingClientRect(),p=Math.min(
  fls.forEach(f=>{const sp=+f.dataset.sp,y0=+f.dataset.y0;const y=(y0-p*260*sp)*innerHeight/100;f.style.transform=`translate3d(0,${y}px,0)`;f.style.left=f.dataset.x;f.style.top='0'})}
 function scaleF(){fls.forEach(f=>{$('iframe',f).style.transform=`scale(${f.clientWidth/1440})`})}
 /* case studies */
-const C=[['halden.html','A dark, patient website for a private wealth office that moves slower than the market, on purpose.','Private wealth · Web design · Data visualisation'],['ossa.html','A brutalist studio site where every project is drawn, not photographed.','Architecture · Art direction · Technical drawing'],['grao.html','A playful coffee shop with a flavour wheel that sells the right bag to the right person.','E-commerce · Brand · Interaction design'],['nodal.html','A product site that shows the software working before you sign up.','AI software · Product marketing · Motion'],['financial-report.html','A monthly management report a founder can read in five minutes, with the Excel model behind it.','Financial reporting · Excel · Dashboards']];
-$('#cases').innerHTML=C.map((c,i)=>`<div class="case"><div class="txt"><div class="n">${i+1}</div><h3>${c[1]}</h3><p class="tags">${c[2]}</p><a class="open" href="${c[0]}">View project <span>→</span></a></div><a class="shot" href="${c[0]}"><iframe data-src="${c[0]}" loading="lazy" tabindex="-1" title=""></iframe><span class="tag">${['Halden','OSSA','Grão','Nodal','Northbridge'][i]}</span></a></div>`).join('');
+const C=[['https://hellomateria.com','MATERIA — market infrastructure for the world\'s physical assets. One exchange for watches, cars, real estate and collectibles, designed and built end to end.','Live product · Co-founder · Brand, product design &amp; build'],['halden.html','A dark, patient website for a private wealth office that moves slower than the market, on purpose.','Private wealth · Web design · Data visualisation'],['ossa.html','A brutalist studio site where every project is drawn, not photographed.','Architecture · Art direction · Technical drawing'],['grao.html','A playful coffee shop with a flavour wheel that sells the right bag to the right person.','E-commerce · Brand · Interaction design'],['nodal.html','A product site that shows the software working before you sign up.','AI software · Product marketing · Motion'],['financial-report.html','A monthly management report a founder can read in five minutes, with the Excel model behind it.','Financial reporting · Excel · Dashboards']];
+$('#cases').innerHTML=C.map((c,i)=>`<div class="case"><div class="txt"><div class="n">${i+1}</div><h3>${c[1]}</h3><p class="tags">${c[2]}</p><a class="open" href="${c[0]}" ${i==0?'target="_blank" rel="noopener"':''}>${i==0?'Visit hellomateria.com':'View project'} <span>→</span></a></div><a class="shot" href="${c[0]}" ${i==0?'target="_blank" rel="noopener"':''}><iframe data-src="${c[0]}" loading="lazy" tabindex="-1" title=""></iframe><span class="tag">${['MATERIA · live','Halden','OSSA','Grão','Nodal','Northbridge'][i]}</span></a></div>`).join('');
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const s=e.target;s.classList.add('in');const f=$('iframe',s);if(!f.src)f.src=f.dataset.src;f.style.transform=`scale(${s.clientWidth/1100})`;io.unobserve(s)}}),{rootMargin:'40% 0px'});
 $$('.shot').forEach(s=>io.observe(s));
 /* approach: sliced text + stacked cards */
